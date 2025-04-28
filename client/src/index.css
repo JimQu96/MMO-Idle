@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+:root {
+  --navbar-height: 60px;
+  background-color: #F8F8F8;
+}
