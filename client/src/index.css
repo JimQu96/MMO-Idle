@@ -2,5 +2,11 @@
 
 :root {
   --navbar-height: 60px;
-  background-color: #F8F8F8;
+  background-color: var(--main-bg-color);
+  color: var(--main-font-color);
+  width: 100vw;
+  /* height: 100vh; */
+  /* overflow: hidden; */
+  min-width: 1366px;
+  font-size: 14px;
 }
