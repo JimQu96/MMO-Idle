@@ -8,3 +8,29 @@
   .leftMenu .arco-menu-inner {
     overflow-y: auto;
   }
+  .statusBar{
+    width: 500px;
+    height: 32px;
+    border-radius: 4px 0px 0px 4px;
+    background-color: var(--hover-color);
+    margin: 0 20px;
+  }
+  
+/* ProgressBar.css */
+.progress-container {
+  width: 300px;
+  height: 20px;
+  background-color: #eee;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #C9CDD4;
+  animation: progress 4s linear infinite;
+}
+
+@keyframes progress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
