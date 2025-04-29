@@ -1,0 +1,18 @@
+@MMO_Idle.API_HostAddress = https://localhost:7043
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTk2ODEzYS0xY2UyLTczY2MtODI0NC0zMWVjOGIzM2UyZjQiLCJ1bmlxdWVfbmFtZSI6ImppbTk2IiwianRpIjoiZGEyMjE1MDgtYWQyMS00ODU3LWFiOWMtYzBmYmY5ZmUzYmZkIiwiZXhwIjoxNzQ1OTM1NDMyLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MDQzIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA0MyJ9.kI6gm8B198U4dESQoA3Pc_F7t9KhXpgL0OCePGajiFM
+
+### 登录
+Post {{MMO_Idle.API_HostAddress}}/api/account/login
+Accept: application/json
+Content-Type: application/json
+
+{
+    "userName": "jim96",
+    "password": "string"
+}
+
+### 获取角色列表
+GET {{MMO_Idle.API_HostAddress}}/api/account/characters
+Accept: application/json
+Authorization: Bearer {{authToken}}
+
