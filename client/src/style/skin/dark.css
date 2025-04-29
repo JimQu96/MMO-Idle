@@ -1,4 +1,8 @@
 :root {
-    --main-bg-color:#1F2024;
+    --main-bg-color:#232324;
+    --sub-bg-color:#282A2E;
     --main-font-color:#ffffff;
+    --sub-font-color:#727272;
+    --hover-color:rgba(255, 255, 255, 0.04);
+    --active-color:#A0EBAA;
 }

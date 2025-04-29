@@ -1,12 +1,48 @@
-@import "tailwindcss";
-
+@import 'tailwindcss';
+@import '@arco-design/web-react/dist/css/arco.css';
 :root {
   --navbar-height: 60px;
   background-color: var(--main-bg-color);
   color: var(--main-font-color);
   width: 100vw;
-  /* height: 100vh; */
-  /* overflow: hidden; */
+  height: 100vh;
+  overflow: hidden;
   min-width: 1366px;
   font-size: 14px;
+}
+
+.arco-menu-inner {
+  overflow-y: auto;
+}
+.arco-menu .arco-menu-inline .arco-menu-item {
+  color: var(--main-font-color);
+}
+.arco-menu .arco-menu-inline-header {
+  color: var(--main-font-color);
+}
+.arco-menu-light .arco-menu-item.arco-menu-selected {
+  color: var(--main-font-color);
+}
+.arco-btn-text:not(.arco-btn-disabled):not(.arco-btn-loading):hover {
+  background-color: transparent;
+}
+.arco-select .arco-select-view, 
+.arco-select.arco-select-focused .arco-select-view, 
+.arco-select:hover .arco-select-view, 
+.arco-input:focus,
+.arco-input.arco-input-focus,
+.arco-input:hover,
+.arco-form-item-status-error .arco-input:not(.arco-input-disabled),
+.arco-form-item-status-error .arco-input:not(.arco-input-disabled):hover {
+  background-color: var(--sub-bg-color);
+  color: var(--main-font-color);
+}
+.arco-select-size-default.arco-select-single .arco-select-view{
+  height: 48px;
+  line-height: 48px;
+}
+.arco-select-popup, .arco-select-popup .arco-select-option {
+  border: 1px solid var(--sub-bg-color);
+  background-color: var(--sub-bg-color);
+  color: var(--main-font-color);
 }

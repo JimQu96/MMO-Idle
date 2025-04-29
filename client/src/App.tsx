@@ -17,7 +17,7 @@ function App() {
       <LeftMenu />
       <div className="flex-1 flex flex-col">
         {/* Main Content */}
-        <div className="flex-1 p-4">
+        <div className="flex-1">
           <Outlet />
         </div>
       </div>
