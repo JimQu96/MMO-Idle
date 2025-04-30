@@ -1,37 +1,94 @@
 import { Menu } from '@arco-design/web-react';
 import style from './index.module.css';
-import { IconApps, IconBug } from '@arco-design/web-react/icon';
-const MenuItem = Menu.Item;
-const SubMenu = Menu.SubMenu;
+import mineIcon from '../../assets/mine.png';
+import forgeIcon from '../../assets/forge.png';
+import dungeonscon from '../../assets/dungeons.png';
+
+interface MenuItem {
+  key: string;
+  title: string;
+  icon?: React.ReactNode;
+  children?: SubMenuItem[];
+}
+
+interface SubMenuItem {
+  key: string;
+  title: string;
+  image: string; // 图片路径或URL
+}
 
 const LeftMenu: React.FC = () => {
+  const menuItems: MenuItem[] = [
+    {
+      key: '1',
+      title: '生活技能',
+      children: [
+        {
+          key: '1-1',
+          title: '采矿',
+          image: mineIcon,
+        },
+        {
+          key: '1-2',
+          title: '副本',
+          image: forgeIcon,
+        },
+      ],
+    },
+    {
+      key: '2',
+      title: '副本',
+      children: [
+        {
+          key: '2-1',
+          title: '地下城',
+          image: dungeonscon,
+        },
+      ],
+    },
+  ];
+  const allParentKeys = menuItems.map(item => item.key);
+  const CustomMenuItem = ({ title, image }: SubMenuItem) => (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }} onClick={()=>{
+      console.log('点击菜单',title)
+    }}>
+      <img
+        src={image}
+        alt={title}
+        style={{
+          width: 20,
+          height: 20,
+          borderRadius: 4,
+          objectFit: 'cover',
+        }}
+      />
+      <span>{title}</span>
+    </div>
+  );
   return (
     <div className={style.leftMenu}>
       <Menu
         style={{ height: '100%' }}
         theme="dark"
         autoOpen={true}
-        // defaultOpenKeys={['0']}
+        defaultOpenKeys={allParentKeys}
         defaultSelectedKeys={['0_1']}>
-        <SubMenu
-          key="0"
-          title={
-            <>
-              <IconApps /> 生活技能
-            </>
-          }>
-          <MenuItem key="0_0">采矿</MenuItem>
-          <MenuItem key="0_1">锻造</MenuItem>
-        </SubMenu>
-        <SubMenu
-          key="1"
-          title={
-            <>
-              <IconBug /> 副本
-            </>
-          }>
-          <MenuItem key="1_0">地下堡</MenuItem>
-        </SubMenu>
+        {menuItems.map(item => (
+          <Menu.SubMenu
+            key={item.key}
+            title={
+              <span>
+                {item.icon}
+                {item.title}
+              </span>
+            }>
+            {item.children?.map(sub => (
+              <Menu.Item key={sub.key}>
+                <CustomMenuItem {...sub} />
+              </Menu.Item>
+            ))}
+          </Menu.SubMenu>
+        ))}
       </Menu>
     </div>
   );

@@ -1,23 +1,29 @@
 import React from 'react';
 import style from './index.module.css';
+import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input, Select } from '@arco-design/web-react';
 const FormItem = Form.Item;
 const Option = Select.Option;
 const options = ['Beijing', 'Shanghai', 'Guangzhou', 'Disabled'];
+
 const Login: React.FC = () => {
+  const navigate = useNavigate();
   const [form] = Form.useForm();
-  const [hasAccount, setHasAccount] = React.useState(false);
-  const [createRole, setCreateRole] = React.useState(false);
+  const [hasAccount, setHasAccount] = React.useState(false); //是否注册过
+  const [createRole, setCreateRole] = React.useState(0); //创建角色界面
+  const [cteateList, setCreateList] = React.useState([] as any); //没角色时的占位
+  const [roleList, setRoleList] = React.useState([] as any); //角色列表
   return (
     <div className={style['login-box']}>
       {createRole ? (
-        <div className="text-2xl font-medium">请创建角色</div>
+        <div className="text-2xl font-medium">请{createRole === 1 ? '创建' : '选择'}角色</div>
       ) : (
         <div className="text-2xl font-medium">欢迎{hasAccount ? '登录' : '注册'}艾姆艾姆欧放置</div>
       )}
 
       <div className="text-sm font-normal text-[var(--sub-font-color)] mt-[10px]">游戏版本 V0.0.1</div>
-      {createRole ? (
+      {createRole === 1 ? (
+        // 创建角色
         <Form
           requiredSymbol={false}
           form={form}
@@ -29,20 +35,20 @@ const Login: React.FC = () => {
           }}
           onSubmit={v => {
             console.log('login', v);
-            //   如果没有角色先去创建角色
-            setCreateRole(true);
+            setCreateRole(2);
           }}>
           <FormItem label="角色名称" field="name" rules={[{ required: true, message: '必填' }]}>
             <Input className={style.input} placeholder="请输入角色名称" />
           </FormItem>
           <FormItem label="职业" field="password" rules={[{ required: true, message: '必填' }]}>
-            <Select className={style.input} 
+            <Select
+              className={style.input}
               placeholder="请选择职业"
               style={{ width: 452 }}
               onChange={value => {
                 console.log('You select', value);
               }}>
-              {options.map((option) => (
+              {options.map(option => (
                 <Option key={option} value={option}>
                   {option}
                 </Option>
@@ -50,8 +56,8 @@ const Login: React.FC = () => {
             </Select>
           </FormItem>
           {/* 职业介绍 */}
-          <div className='text-base text-[var(--sub-font-color)]'>
-            <div className='ttext-[var(--main-font-color)]'>职业介绍：</div>
+          <div className="text-base text-[var(--sub-font-color)]">
+            <div className="ttext-[var(--main-font-color)]">职业介绍：</div>
             <div>职责：</div>
             <div>被动技能：</div>
             <div>次要技能：</div>
@@ -67,6 +73,33 @@ const Login: React.FC = () => {
             </Button>
           </FormItem>
         </Form>
+      ) : createRole === 2 ? (
+        //选择角色,最多只能选三个角色，保留三个空位
+        <div>
+          {roleList.map((item: any) => (
+            <div className={style['rule-box']} onClick={() => {
+                console.log('点击了角色进入页面');
+                navigate('/')
+              }}>
+              <div>{item.name}</div>
+              <div>
+                {item.job} <span>{item.level}</span>
+              </div>
+            </div>
+          ))}
+          {cteateList.map(() => (
+            <div
+              className={style['rule-box']}
+              style={{borderStyle:'dashed'}}
+              onClick={() => {
+                console.log('点击了');
+                setCreateRole(1);
+              }}>
+              <div>+</div>
+              <div>创建角色</div>
+            </div>
+          ))}
+        </div>
       ) : (
         <>
           <Form
@@ -80,8 +113,21 @@ const Login: React.FC = () => {
             }}
             onSubmit={v => {
               console.log('login', v);
-              //   如果没有角色先去创建角色
-              setCreateRole(true);
+              //   如果有角色，展示选择角色页面2，没有展示创建角色页面1
+              setCreateRole(2);
+              const list = [
+                {
+                  name: 'MHN',
+                  job: '防御战士',
+                  level: 'LV1',
+                },
+              ];
+              setRoleList(list);
+              const arr = [];
+              for (let i = 0; i < 3 - list.length; i++) {
+                arr.push(i);
+              }
+              setCreateList(arr);
             }}>
             <FormItem label="账号" field="name" rules={[{ required: true, message: '账号必填' }]}>
               <Input className={style.input} placeholder="请输入账号" />
@@ -120,7 +166,7 @@ const Login: React.FC = () => {
             </FormItem>
           </Form>
           <div style={{ color: 'var(--sub-font-color)' }}>
-            {hasAccount ? '未有账号' : '已有账号'}
+            {hasAccount ? '未有账号?' : '已有账号!'}
             <Button
               type="text"
               style={{ color: 'var(--active-color)' }}

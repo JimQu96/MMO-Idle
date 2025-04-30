@@ -1,0 +1,27 @@
+export const mineList=[
+  {
+    name:'灰色矿石',
+    level:'Lv.01'
+  },{
+    name:'白银矿石',
+    level:'Lv.10'
+  },{
+    name:'翠绿矿石',
+    level:'Lv.20'
+  },{
+    name:'蔚蓝矿石',
+    level:'Lv.30'
+  },{
+    name:'深紫矿石',
+    level:'Lv.40'
+  },{
+    name:'绯红矿石',
+    level:'Lv.50'
+  },{
+    name:'粉甜矿石',
+    level:'Lv.60'
+  },{
+    name:'彩虹矿石',
+    level:'Lv.70'
+  }
+]

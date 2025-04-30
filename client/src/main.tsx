@@ -4,15 +4,22 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
 import Login from './components/Login/Login.tsx'
+import Home from './pages/Home/index.tsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
+    children: [
+      {
+        index: true, // 默认子路由
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+    ],
   },
 ])
 
