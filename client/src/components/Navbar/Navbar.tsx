@@ -4,20 +4,23 @@ import { useNavigate } from 'react-router-dom';
 import style from './index.module.css';
 import logo from '../../assets/react.svg';
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC = (props: { userInfo: object }) => {
+  const { userInfo } = props;
   const navigate = useNavigate();
   const progressBarRef = useRef<HTMLDivElement | null>(null);
-  const [working, setWorking] = useState(true);
+  const [working, setWorking] = useState(false);
   const dropList = (
-    <Menu theme='dark' onClickMenuItem={(key: string)=>{
-      if(key === '1'){
-        console.log('click menu item', key);
-      }else if(key === '2'){
-        navigate('/login');
-      }
-    }}>
-      <Menu.Item key='1'>选择角色</Menu.Item>
-      <Menu.Item key='2'>退出登录</Menu.Item>
+    <Menu
+      theme="dark"
+      onClickMenuItem={(key: string) => {
+        if (key === '1') {
+          console.log('click menu item', key);
+        } else if (key === '2') {
+          navigate('/login');
+        }
+      }}>
+      <Menu.Item key="1">选择角色</Menu.Item>
+      <Menu.Item key="2">退出登录</Menu.Item>
     </Menu>
   );
   useEffect(() => {
@@ -56,7 +59,12 @@ const Navbar: React.FC = () => {
               {/* 滚动的条 */}
               <div className={style['progress-bar']} ref={progressBarRef}></div>
             </div>
-            <Button onClick={() => {setWorking(false)}}>立即停止</Button>
+            <Button
+              onClick={() => {
+                setWorking(false);
+              }}>
+              立即停止
+            </Button>
           </div>
         ) : (
           <div>正在发呆中</div>
@@ -64,10 +72,10 @@ const Navbar: React.FC = () => {
       </div>
       {/* 个人信息 */}
       <div className="flex items-center justify-between">
-        <div style={{ fontSize: 16 }}>名字名字名字名字</div>
-        <Dropdown droplist={dropList} position='bl'>
-        <img style={{ width: 32, height: 32, marginLeft: 20, marginRight: 20 }} src={logo} alt="" />
-      </Dropdown>
+        <div style={{ fontSize: 16 }}>{userInfo.name}</div>
+        <Dropdown droplist={dropList} position="bl">
+          <img style={{ width: 32, height: 32, marginLeft: 20, marginRight: 20 }} src={logo} alt="" />
+        </Dropdown>
       </div>
     </div>
   );

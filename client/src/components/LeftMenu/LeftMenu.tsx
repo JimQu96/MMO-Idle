@@ -1,8 +1,8 @@
 import { Menu } from '@arco-design/web-react';
 import style from './index.module.css';
-import mineIcon from '../../assets/mine.png';
-import forgeIcon from '../../assets/forge.png';
-import dungeonscon from '../../assets/dungeons.png';
+import mineIcon from '../../assets/mine.svg';
+import forgeIcon from '../../assets/forge.svg';
+import dungeonscon from '../../assets/dungeons.svg';
 
 interface MenuItem {
   key: string;
@@ -17,7 +17,8 @@ interface SubMenuItem {
   image: string; // 图片路径或URL
 }
 
-const LeftMenu: React.FC = () => {
+const LeftMenu: React.FC = (props:{onMenuClick: Function}) => {
+  const { onMenuClick = () => {} } = props;
   const menuItems: MenuItem[] = [
     {
       key: '1',
@@ -30,7 +31,7 @@ const LeftMenu: React.FC = () => {
         },
         {
           key: '1-2',
-          title: '副本',
+          title: '锻造',
           image: forgeIcon,
         },
       ],
@@ -50,14 +51,14 @@ const LeftMenu: React.FC = () => {
   const allParentKeys = menuItems.map(item => item.key);
   const CustomMenuItem = ({ title, image }: SubMenuItem) => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }} onClick={()=>{
-      console.log('点击菜单',title)
+      onMenuClick(title)
     }}>
       <img
         src={image}
         alt={title}
         style={{
-          width: 20,
-          height: 20,
+          width: 22,
+          height: 22,
           borderRadius: 4,
           objectFit: 'cover',
         }}
