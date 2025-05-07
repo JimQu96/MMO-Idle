@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-const Card: React.FC = (props: { status: string; info: object; onCardClick: Function }) => {
-  const { status = '1', info, onCardClick = () => {} } = props;
+const Card: React.FC = (props: { status: string; info: object; type: string; onCardClick: Function }) => {
+  const { status = '1', info, type, onCardClick = () => {} } = props;
   //假设 status 1:等级不足，2立即开采，3开采中
   const statusMap: any = {
     '1': {
@@ -29,7 +29,10 @@ const Card: React.FC = (props: { status: string; info: object; onCardClick: Func
           onCardClick(info);
         }
       }}>
-      <div>{info.name}</div>
+      <div>
+        {info.name}
+        {type === '采矿' ? '矿石' : type}
+      </div>
       <div>
         <div className="mb-[20px]">{info.level}</div>
         {/* 假设 status 1:等级不足，2立即开采，3开采中 */}

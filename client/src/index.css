@@ -71,3 +71,25 @@ body {
   background-color: var(--sub-bg-color);
   border-color: var(--sub-bg-color);
 }
+/* 隐藏所有浏览器的滚动条 */
+.hide-scrollbar {
+  overflow-y: auto; /* 或 scroll，根据需要选择 */
+  -ms-overflow-style: none;  /* IE 和 Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* WebKit 浏览器（Chrome, Safari） */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* 隐藏 Arco Menu 滚动条 */
+.arco-menu-inner {
+  overflow-y: auto !important;
+  -ms-overflow-style: none !important;  /* IE/Edge */
+  scrollbar-width: none !important;     /* Firefox */
+}
+
+/* WebKit 浏览器（Chrome, Safari） */
+.arco-menu-inner::-webkit-scrollbar {
+  display: none !important;
+}

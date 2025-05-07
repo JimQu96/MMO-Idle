@@ -73,7 +73,7 @@ const LeftMenu: React.FC = (props:{onMenuClick: Function}) => {
         theme="dark"
         autoOpen={true}
         defaultOpenKeys={allParentKeys}
-        defaultSelectedKeys={['0_1']}>
+        defaultSelectedKeys={['1-1']}>
         {menuItems.map(item => (
           <Menu.SubMenu
             key={item.key}
