@@ -1,6 +1,6 @@
 @MMO_Idle.API_HostAddress = https://localhost:7043
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTk2ODEzYS0xY2UyLTczY2MtODI0NC0zMWVjOGIzM2UyZjQiLCJ1bmlxdWVfbmFtZSI6ImppbTk2IiwianRpIjoiZGEyMjE1MDgtYWQyMS00ODU3LWFiOWMtYzBmYmY5ZmUzYmZkIiwiZXhwIjoxNzQ1OTM1NDMyLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MDQzIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA0MyJ9.kI6gm8B198U4dESQoA3Pc_F7t9KhXpgL0OCePGajiFM
-
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTk2ODEzYS0xY2UyLTczY2MtODI0NC0zMWVjOGIzM2UyZjQiLCJ1bmlxdWVfbmFtZSI6ImppbTk2IiwianRpIjoiNGE3NjUyODktNjhiZC00YmQ1LWFhMDgtNGY0ZDg5YjY5MTU2IiwiZXhwIjoxNzQ2NjkwMDUwLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MDQzIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA0MyJ9.YzXrqDQQB4AMCdKPGzYeYpm6FndaP48vzbWYrBGxUG4
+@characterId = b18f4af3-77fe-4a3f-ad95-35fe7bd93b8b
 ### 登录
 Post {{MMO_Idle.API_HostAddress}}/api/account/login
 Accept: application/json
@@ -16,3 +16,25 @@ GET {{MMO_Idle.API_HostAddress}}/api/account/characters
 Accept: application/json
 Authorization: Bearer {{authToken}}
 
+### 创建角色
+
+### 获取角色状态（技能等级）
+
+### 获取角色装备信息
+GET {{MMO_Idle.API_HostAddress}}/api/characterEquipment/{{characterId}}/equipment
+Accept: application/json
+Authorization: Bearer {{authToken}}
+### 获取角色背包物品列表
+GET {{MMO_Idle.API_HostAddress}}/api/characterEquipment/{{characterId}}/backpack
+Accept: application/json
+Authorization: Bearer {{authToken}}
+
+### 穿戴装备
+Post {{MMO_Idle.API_HostAddress}}/api/characterEquipment/{{characterId}}/equip/35
+Accept: application/json
+Content-Type: application/json
+
+### 卸下装备
+Post {{MMO_Idle.API_HostAddress}}/api/characterEquipment/{{characterId}}/unequip/35
+Accept: application/json
+Content-Type: application/json

@@ -6,7 +6,7 @@ namespace MMOIdle.Domain.Entities;
 public class Character
 {
     public Guid Id { get; set; }
-    public string Name { get; set; } = string.Empty;
+    public required string Name { get; set; }
     public CharacterClass Class { get; set; }
     public int Level { get; set; } = 1;
     public int Experience { get; set; }
@@ -18,5 +18,5 @@ public class Character
     public Guid AccountId { get; set; }
     
     // Navigation property
-    public virtual Account Account { get; set; } = null!;
+    public virtual Account? Account { get; set; }
 } 

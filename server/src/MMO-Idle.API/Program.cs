@@ -4,6 +4,8 @@ using MMOIdle.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using MMOIdle.Application.Characters;
+using MMOIdle.Domain.Enums;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +14,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 // Add JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -31,11 +32,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 // Add DbContext
 builder.Services.AddDbContext<GameDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"), 
+    o => o.MapEnum<ItemCategory>("item_category")
+    .MapEnum<ItemType>("item_type")
+    .MapEnum<EquipmentSlot>("equipment_slot")
+    .MapEnum<ItemQuality>("item_quality")
+    ));
 
 // Register Application Services
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddScoped<ICharacterEquipmentService, CharacterEquipmentService>();
 
 var app = builder.Build();
 
