@@ -1,6 +1,6 @@
 import axios from 'axios';
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL, // 环境变量配置:ml-citation{ref="1,4" data="citationList"}
+  baseURL: import.meta.env.VITE_API_URL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

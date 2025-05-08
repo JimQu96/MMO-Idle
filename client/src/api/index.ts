@@ -17,10 +17,10 @@ interface LoginResponse {
 
 
 export const register = (params: LoginParams) => {
-    return request.post<LoginResponse>('/Account/register', params);
+    return request.post<LoginResponse>('/api/Account/register', params);
   };
 export const login = (params: LoginParams) => {
-    return request.post<LoginResponse>('/Account/login', params);
+    return request.post<LoginResponse>('/api/Account/login', params);
   };
   
   

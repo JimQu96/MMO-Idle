@@ -8,7 +8,19 @@ using MMOIdle.Application.Characters;
 using MMOIdle.Domain.Enums;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
+var allowedOrigins = configuration.GetSection("AllowedOrigins").Get<string[]>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigins",
+        builder =>
+        {
+            builder.WithOrigins(allowedOrigins)
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
@@ -26,7 +38,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true,
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]))
         };
     });
 
@@ -59,6 +71,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseCors("AllowSpecificOrigins");
 app.MapControllers();
 
 app.Run();
