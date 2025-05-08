@@ -3,6 +3,7 @@ import style from './index.module.css';
 import mineIcon from '../../assets/mine.svg';
 import forgeIcon from '../../assets/forge.svg';
 import dungeonscon from '../../assets/dungeons.svg';
+import { state } from '../../store';
 
 interface MenuItem {
   key: string;
@@ -15,9 +16,10 @@ interface SubMenuItem {
   key: string;
   title: string;
   image: string; // 图片路径或URL
+  attr:string;
 }
 
-const LeftMenu: React.FC = (props:{onMenuClick: Function}) => {
+const LeftMenu: React.FC = (props: { onMenuClick: Function }) => {
   const { onMenuClick = () => {} } = props;
   const menuItems: MenuItem[] = [
     {
@@ -26,13 +28,15 @@ const LeftMenu: React.FC = (props:{onMenuClick: Function}) => {
       children: [
         {
           key: '1-1',
-          title: '采矿',
+          title: `采矿Lv.${state.userInfo.mine?.level<10?'0':''}${state.userInfo.mine?.level}`,
           image: mineIcon,
+          attr:'mine'
         },
         {
           key: '1-2',
-          title: '锻造',
+          title: `锻造Lv.${state.userInfo.forge?.level<10?'0':''}${state.userInfo.forge?.level}`,
           image: forgeIcon,
+          attr:'forge'
         },
       ],
     },
@@ -44,15 +48,18 @@ const LeftMenu: React.FC = (props:{onMenuClick: Function}) => {
           key: '2-1',
           title: '地下城',
           image: dungeonscon,
+          attr:'fight'
         },
       ],
     },
   ];
   const allParentKeys = menuItems.map(item => item.key);
-  const CustomMenuItem = ({ title, image }: SubMenuItem) => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }} onClick={()=>{
-      onMenuClick(title)
-    }}>
+  const CustomMenuItem = ({ attr, title, image }: SubMenuItem) => (
+    <div
+      style={{ display: 'flex', alignItems: 'center', gap: 8 }}
+      onClick={() => {
+        onMenuClick(attr);
+      }}>
       <img
         src={image}
         alt={title}
@@ -68,12 +75,7 @@ const LeftMenu: React.FC = (props:{onMenuClick: Function}) => {
   );
   return (
     <div className={style.leftMenu}>
-      <Menu
-        style={{ height: '100%' }}
-        theme="dark"
-        autoOpen={true}
-        defaultOpenKeys={allParentKeys}
-        defaultSelectedKeys={['1-1']}>
+      <Menu style={{ height: '100%' }} theme="dark" autoOpen={true} defaultOpenKeys={allParentKeys} defaultSelectedKeys={['1-1']}>
         {menuItems.map(item => (
           <Menu.SubMenu
             key={item.key}

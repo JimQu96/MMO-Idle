@@ -8,19 +8,19 @@ import { userInfo, menuCardMap } from '../../components/constant';
 import Chat from '../../components/Chat/Chat';
 
 const Home: React.FC = () => {
-  const [activeMenu, setActiveMenu] = useState('采矿');
-  const [activeSubMenu, setActiveSubMenu] = useState('镐子');
+  const [activeMenu, setActiveMenu] = useState('mine');
   const [allParentKeys, setAllParentKeys] = useState<string[]>([]);
-  const [cardList, setCardList] = useState<object[]>(menuCardMap['采矿'].cardList);
-  useEffect(() => {});
+  const [cardList, setCardList] = useState<object[]>(menuCardMap['mine'].cardList);
+  useEffect(() => {
+  });
   const handleCardClick = (info: object) => {
     console.log('开采', info);
   };
-  const handleMenuClick = (title: string) => {
-    console.log('点击菜单', title);
-    setActiveMenu(title);
-    setAllParentKeys(menuCardMap[title].subMenu.map((item: any) => item.key));
-    setCardList(menuCardMap[title].subMenu[0].children[0].cardList);
+  const handleMenuClick = (attr: string) => {
+    console.log('点击菜单', attr);
+    setActiveMenu(attr);
+    setAllParentKeys(menuCardMap[attr].subMenu.map((item: any) => item.key));
+    setCardList(menuCardMap[attr].subMenu[0].children[0].cardList);
   };
   return (
     <div className="">
@@ -41,7 +41,7 @@ const Home: React.FC = () => {
                   menuCardMap[activeMenu].subMenu.forEach(parent => {
                     parent.children.forEach(child => {
                       if (child.key === key) {
-                        setActiveSubMenu(child.title);
+                        setCardList(child.cardList);
                       }
                     });
                   });
@@ -63,9 +63,9 @@ const Home: React.FC = () => {
               </Menu>
               <div
                 className="flex-1 overflow-y-scroll grid justify-center gap-[20px] hide-scrollbar"
-                style={{ maxHeight: 'calc(100vh - 360px)', gridTemplateColumns: 'repeat(auto-fit, 300px)' }}>
+                style={{ maxHeight: 'calc(100vh - 360px)', gridTemplateColumns: 'repeat(auto-fit, 300px)', gridAutoRows: 'min-content' }}>
                 {cardList.map(item => (
-                  <Card info={item} type={activeSubMenu} onCardClick={handleCardClick} />
+                  <Card info={item} onCardClick={handleCardClick} />
                 ))}
               </div>
             </div>
@@ -73,9 +73,9 @@ const Home: React.FC = () => {
             <>
               <div
                 className="grid justify-center gap-[20px]"
-                style={{ maxHeight: 'calc(100vh - 360px)', gridTemplateColumns: 'repeat(auto-fit, 300px)' }}>
+                style={{ maxHeight: 'calc(100vh - 360px)', gridTemplateColumns: 'repeat(auto-fit, 300px)', gridAutoRows: 'min-content' }}>
                 {cardList.map(item => (
-                  <Card info={item} type={activeMenu} onCardClick={handleCardClick} />
+                  <Card info={item} onCardClick={handleCardClick} />
                 ))}
               </div>
             </>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-const Card: React.FC = (props: { status: string; info: object; type: string; onCardClick: Function }) => {
-  const { status = '1', info, type, onCardClick = () => {} } = props;
+import { state } from '../../store';
+const Card: React.FC = (props: { info: any; onCardClick: Function }) => {
+  const { info, onCardClick = () => {} } = props;
+  const [status, setStatus] = useState('1');
   //假设 status 1:等级不足，2立即开采，3开采中
   const statusMap: any = {
     '1': {
@@ -19,7 +21,17 @@ const Card: React.FC = (props: { status: string; info: object; type: string; onC
       text: '开采中',
     },
   };
-  useEffect(() => {});
+    console.log('卡片信息', info);
+    const currentLevel = state.userInfo[info.attr].level;
+
+  useEffect(() => {
+    console.log('卡片信息', info);
+    if (currentLevel < info.level) {
+      setStatus('1');
+    } else if (currentLevel >= info.level) {
+      setStatus('2');
+    }
+  }, [info]);
   return (
     <div
       className="flex justify-between w-[300px] h-[104px] bg-[var(--main-bg-color)] border-[1px] border-solid border-[var(--card-border-color)] rounded-[10px] p-[20px]"
@@ -29,12 +41,9 @@ const Card: React.FC = (props: { status: string; info: object; type: string; onC
           onCardClick(info);
         }
       }}>
+      <div>{info.name}</div>
       <div>
-        {info.name}
-        {type === '采矿' ? '矿石' : type}
-      </div>
-      <div>
-        <div className="mb-[20px]">{info.level}</div>
+        <div className="mb-[20px]">Lv.{info.level<10?'0':''}{info.level}</div>
         {/* 假设 status 1:等级不足，2立即开采，3开采中 */}
         <div style={{ color: statusMap[status].color }}>{statusMap[status].text}</div>
       </div>

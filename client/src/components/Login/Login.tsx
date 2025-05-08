@@ -2,6 +2,10 @@ import React from 'react';
 import style from './index.module.css';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input, Select } from '@arco-design/web-react';
+import {state, setUserInfo} from '../../store'
+import { userInfo } from '../../components/constant';
+import { register ,login} from '../../api/index';
+
 const FormItem = Form.Item;
 const Option = Select.Option;
 const options = ['Beijing', 'Shanghai', 'Guangzhou', 'Disabled'];
@@ -13,6 +17,12 @@ const Login: React.FC = () => {
   const [createRole, setCreateRole] = React.useState(0); //创建角色界面
   const [cteateList, setCreateList] = React.useState([] as any); //没角色时的占位
   const [roleList, setRoleList] = React.useState([] as any); //角色列表
+  const onRegister=async(params:any)=>{
+    const res=await register(params)
+  }
+  const onLogin=async(params:any)=>{
+    const res=await login(params)
+  }
   return (
     <div className={style['login-box']}>
       {createRole ? (
@@ -79,6 +89,8 @@ const Login: React.FC = () => {
           {roleList.map((item: any) => (
             <div className={style['rule-box']} onClick={() => {
                 console.log('点击了角色进入页面');
+                setUserInfo(userInfo)
+                console.log(state.userInfo)
                 navigate('/')
               }}>
               <div>{item.name}</div>
@@ -113,6 +125,11 @@ const Login: React.FC = () => {
             }}
             onSubmit={v => {
               console.log('login', v);
+              if(hasAccount){
+                onLogin(v)
+              }else{
+                onRegister(v)
+              }
               //   如果有角色，展示选择角色页面2，没有展示创建角色页面1
               setCreateRole(2);
               const list = [
@@ -129,7 +146,7 @@ const Login: React.FC = () => {
               }
               setCreateList(arr);
             }}>
-            <FormItem label="账号" field="name" rules={[{ required: true, message: '账号必填' }]}>
+            <FormItem label="账号" field="userName" rules={[{ required: true, message: '账号必填' }]}>
               <Input className={style.input} placeholder="请输入账号" />
             </FormItem>
             <FormItem label="密码" field="password" rules={[{ required: true, message: '密码必填' }]}>

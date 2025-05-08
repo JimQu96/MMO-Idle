@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button, Tabs } from '@arco-design/web-react';
+import { state } from '../../store';
 import Box from '../Box/Box';
 const TabPane = Tabs.TabPane;
 const Card: React.FC = () => {
+  const info=state.userInfo
   const [activeTab, setActiveTab] = useState('0');
   //身体
   const bodyList = [
@@ -261,19 +263,15 @@ const Card: React.FC = () => {
         <div className="text-[16px]">
           <div className="mt-[10px] flex">
             <div className="text-[var(--sub-font-color)] shrink-0">被动技能：</div>
-            <div>每次行动护甲值增加1%，可叠加30层</div>
+            <div>{info.skill.passiveSkills}</div>
           </div>
           <div className="mt-[10px] flex">
             <div className="text-[var(--sub-font-color)] shrink-0">次要技能：</div>
-            <div>
-              盾牌猛击：使用盾牌猛击对手，对单一目标造成<span>10</span>伤害
-            </div>
+            <div>{info.skill.minorSkills}</div>
           </div>
           <div className="mt-[10px] flex">
             <div className="text-[var(--sub-font-color)] shrink-0">主要技能：</div>
-            <div>
-              天神下凡：强化自己，恢复<span>50%</span>血量并增加<span>10</span>护甲
-            </div>
+            <div>{info.skill.keySkills}</div>
           </div>
         </div>
       ),
@@ -285,7 +283,7 @@ const Card: React.FC = () => {
         <div className="text-[16px]">
           <div className="mt-[10px] flex">
             <div className="text-[var(--sub-font-color)] shrink-0">职责：</div>
-            <div>坦克</div>
+            <div>{info.duty}</div>
           </div>
           <div className="mt-[10px] flex">
             <div className="text-[var(--sub-font-color)] shrink-0">伤害类型：</div>
