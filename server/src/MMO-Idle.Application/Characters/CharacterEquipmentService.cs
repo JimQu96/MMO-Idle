@@ -1,4 +1,3 @@
-using MMOIdle.Domain.Entities;
 using MMOIdle.Application.Characters.DTOs;
 using MMOIdle.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -75,18 +74,18 @@ public class CharacterEquipmentService : ICharacterEquipmentService
 
         if (backpackItem == null || backpackItem.Quantity <= 0)
         {
-            return;
+            throw new InvalidOperationException("背包内没有该装备");
         }
 
         var gameItem = await _dbContext.GameItems.FindAsync(itemId);
         if (gameItem == null)
         {
-            return;
+            throw new InvalidOperationException("无效的物品");
         }
 
         if (!ItemCategorySlotMapping.TryGetValue(gameItem.Category, out var validSlots))
         {
-            return;
+            throw new InvalidOperationException("没有合适的装备槽位");
         }
 
         // 查找空槽位
@@ -156,29 +155,31 @@ public class CharacterEquipmentService : ICharacterEquipmentService
         var characterEquipment = await _dbContext.CharacterEquipments
             .FirstOrDefaultAsync(e => e.CharacterId == characterId && e.ItemId == itemId);
 
-        if (characterEquipment != null)
+        if (characterEquipment == null)
         {
-            _dbContext.CharacterEquipments.Remove(characterEquipment);
-            
-            // 判断当前背包有没有同样的装备，如果有数量+1，如果没有新建一条
-            var existingBackpackItem = await _dbContext.CharacterBackpacks
-               .FirstOrDefaultAsync(b => b.CharacterId == characterId && b.ItemId == characterEquipment.ItemId);
-
-            if (existingBackpackItem != null)
-            {
-                existingBackpackItem.Quantity += 1;
-            }
-            else
-            {
-                var newBackpackItem = new CharacterBackpack
-                {
-                    CharacterId = characterId,
-                    ItemId = characterEquipment.ItemId,
-                };
-                _dbContext.CharacterBackpacks.Add(newBackpackItem);
-            }
-            
-            await _dbContext.SaveChangesAsync();
+            throw new InvalidOperationException("当前并未装备此装备");
         }
+
+        _dbContext.CharacterEquipments.Remove(characterEquipment);
+
+        // 判断当前背包有没有同样的装备，如果有数量+1，如果没有新建一条
+        var existingBackpackItem = await _dbContext.CharacterBackpacks
+           .FirstOrDefaultAsync(b => b.CharacterId == characterId && b.ItemId == characterEquipment.ItemId);
+
+        if (existingBackpackItem != null)
+        {
+            existingBackpackItem.Quantity += 1;
+        }
+        else
+        {
+            var newBackpackItem = new CharacterBackpack
+            {
+                CharacterId = characterId,
+                ItemId = characterEquipment.ItemId,
+            };
+            _dbContext.CharacterBackpacks.Add(newBackpackItem);
+        }
+
+        await _dbContext.SaveChangesAsync();
     }
 }

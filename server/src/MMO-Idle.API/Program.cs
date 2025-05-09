@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using MMOIdle.Application.Characters;
 using MMOIdle.Domain.Enums;
+using MMOIdle.API.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -21,9 +22,18 @@ builder.Services.AddCors(options =>
                    .AllowAnyMethod();
         });
 });
+
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddControllers();
+builder.Services.AddControllers(
+    options =>
+    {
+        // 添加全局异常处理过滤器
+        options.Filters.Add<GlobalExceptionFilter>();
+        // 添加响应格式化过滤器
+        options.Filters.Add<ApiResponseFilterAttribute>();
+    }
+    );
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // Add JWT Authentication

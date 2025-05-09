@@ -36,7 +36,7 @@ public class CharacterEquipmentController : ControllerBase
     public async Task<IActionResult> EquipItem(Guid characterId, long itemId)
     {
         await _equipmentService.EquipItem(characterId, itemId);
-        return NoContent();
+        return Ok();
     }
 
     // 卸下装备
@@ -44,6 +44,6 @@ public class CharacterEquipmentController : ControllerBase
     public async Task<IActionResult> UnequipItem(Guid characterId, long itemId)
     {
         await _equipmentService.UnequipItem(characterId, itemId);
-        return NoContent();
+        return Ok();
     }
 }

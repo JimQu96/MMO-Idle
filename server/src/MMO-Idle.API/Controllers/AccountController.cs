@@ -20,64 +20,32 @@ public class AccountController : ControllerBase
     [HttpPost("register")]
     public async Task<ActionResult<AccountResponseDto>> Register(RegisterAccountDto dto)
     {
-        try
-        {
-            var result = await _accountService.RegisterAsync(dto);
-            return Ok(result);
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
+        var result = await _accountService.RegisterAsync(dto);
+        return Ok(result);
     }
 
     [HttpPost("login")]
     public async Task<ActionResult<AccountResponseDto>> Login(LoginAccountDto dto)
     {
-        try
-        {
-            var result = await _accountService.LoginAsync(dto);
-            return Ok(result);
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-    }
 
-    [Authorize]
-    [HttpGet("test-auth")]
-    public ActionResult TestAuth()
-    {
-        var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-        var userName = User.FindFirst(System.Security.Claims.ClaimTypes.Name)?.Value;
-        
-        return Ok(new { 
-            message = "Authentication successful",
-            userId = userId,
-            userName = userName
-        });
+        var result = await _accountService.LoginAsync(dto);
+        return Ok(result);
+
     }
 
     [Authorize]
     [HttpGet("characters")]
     public async Task<ActionResult<List<CharacterDto>>> GetCharacters()
     {
-        try
+        // 从token中获取用户ID
+        var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+        if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out Guid accountId))
         {
-            // 从token中获取用户ID
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out Guid accountId))
-            {
-                return Unauthorized(new { message = "Invalid token or user ID not found" });
-            }
+            return Unauthorized(new { message = "Invalid token or user ID not found" });
+        }
 
-            var characters = await _accountService.GetCharactersByAccountIdAsync(accountId);
-            return Ok(characters);
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
+        var characters = await _accountService.GetCharactersByAccountIdAsync(accountId);
+        return Ok(characters);
+
     }
-} 
+}

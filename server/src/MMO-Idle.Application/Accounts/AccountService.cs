@@ -55,7 +55,7 @@ public class AccountService : IAccountService
 
         if (account == null || account.PasswordHash != HashPassword(dto.Password))
         {
-            throw new Exception("Invalid username or password");
+            throw new ArgumentException("Invalid username or password");
         }
 
         // 更新最后登录时间
