@@ -1,6 +1,6 @@
 @MMO_Idle.API_HostAddress = https://localhost:7043
 @authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTk2ODEzYS0xY2UyLTczY2MtODI0NC0zMWVjOGIzM2UyZjQiLCJ1bmlxdWVfbmFtZSI6ImppbTk2IiwianRpIjoiNGE3NjUyODktNjhiZC00YmQ1LWFhMDgtNGY0ZDg5YjY5MTU2IiwiZXhwIjoxNzQ2NjkwMDUwLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MDQzIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA0MyJ9.YzXrqDQQB4AMCdKPGzYeYpm6FndaP48vzbWYrBGxUG4
-@characterId = b18f4af3-77fe-4a3f-ad95-35fe7bd93b8b
+@characterId = 278b9b5c-1852-45f7-8697-2363956a5240
 ### µÇÂ¼
 Post {{MMO_Idle.API_HostAddress}}/api/account/login
 Accept: application/json
