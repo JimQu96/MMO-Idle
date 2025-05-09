@@ -2,7 +2,7 @@ import React from 'react';
 import style from './index.module.css';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input, Select } from '@arco-design/web-react';
-import {state, setUserInfo} from '../../store'
+import {state, setUserInfo, setToken} from '../../store'
 import { userInfo } from '../../components/constant';
 import { register ,login} from '../../api/index';
 
@@ -20,9 +20,15 @@ const Login: React.FC = () => {
   const onRegister=async(params:any)=>{
     delete params.confirmPassword;
     const res=await register(params)
+    if(res){
+      setToken(res.data.token)
+    }
   }
   const onLogin=async(params:any)=>{
     const res=await login(params)
+    if(res){
+      setToken(res.data.token)
+    }
   }
   return (
     <div className={style['login-box']}>
