@@ -41,6 +41,7 @@ body {
 .arco-btn-text:not(.arco-btn-disabled):not(.arco-btn-loading):hover{
   background-color: transparent;
 }
+.arco-modal, 
 .arco-select .arco-select-view,
 .arco-select.arco-select-focused .arco-select-view,
 .arco-select:hover .arco-select-view,

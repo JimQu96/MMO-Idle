@@ -6,12 +6,15 @@ import Card from '../../components/Card/Card';
 import RightColumns from '../../components/RightColumns/RightColumns';
 import { userInfo, menuCardMap } from '../../components/constant';
 import Chat from '../../components/Chat/Chat';
+import Popup from '../../components/Popup/Popup';
 
 const Home: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState('mine');
   const [allParentKeys, setAllParentKeys] = useState<string[]>([]);
   const [cardList, setCardList] = useState<object[]>(menuCardMap['mine'].cardList);
+  const [showPopup, setShowPopup] = useState(false);
   useEffect(() => {
+    setShowPopup(true)
   });
   const handleCardClick = (info: object) => {
     console.log('开采', info);
@@ -87,6 +90,7 @@ const Home: React.FC = () => {
         {/* 右侧装备区 */}
         <RightColumns />
       </div>
+      <Popup show={showPopup} />
     </div>
   );
 };

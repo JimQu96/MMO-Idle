@@ -18,6 +18,7 @@ const Login: React.FC = () => {
   const [cteateList, setCreateList] = React.useState([] as any); //没角色时的占位
   const [roleList, setRoleList] = React.useState([] as any); //角色列表
   const onRegister=async(params:any)=>{
+    delete params.confirmPassword;
     const res=await register(params)
   }
   const onLogin=async(params:any)=>{
@@ -155,7 +156,7 @@ const Login: React.FC = () => {
             {!hasAccount && (
               <FormItem
                 label="确认密码"
-                field="confirm_password"
+                field="confirmPassword"
                 dependencies={['password']}
                 rules={[
                   {
