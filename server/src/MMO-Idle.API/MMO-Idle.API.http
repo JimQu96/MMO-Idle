@@ -1,5 +1,5 @@
 @MMO_Idle.API_HostAddress = https://localhost:7043
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTk2ODEzYS0xY2UyLTczY2MtODI0NC0zMWVjOGIzM2UyZjQiLCJ1bmlxdWVfbmFtZSI6ImppbTk2IiwianRpIjoiNGE3NjUyODktNjhiZC00YmQ1LWFhMDgtNGY0ZDg5YjY5MTU2IiwiZXhwIjoxNzQ2NjkwMDUwLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MDQzIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA0MyJ9.YzXrqDQQB4AMCdKPGzYeYpm6FndaP48vzbWYrBGxUG4
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTk2YjQyOC1jNzBkLTc1YzEtYjlmZi03YWNmNWFlZWNkMGMiLCJ1bmlxdWVfbmFtZSI6ImppbTk2IiwianRpIjoiNTZhYzQxZjEtYjJmOS00OGM3LTk4NjMtOTQwYWExMjY0NmJmIiwiZXhwIjoxNzQ2ODA3OTM3LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MDQzIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA0MyJ9.uInoljaK6EuXZcjZA0aj58Sr0wDjy7s-Usg4GifHoK8
 @characterId = 278b9b5c-1852-45f7-8697-2363956a5240
 ### 登录
 Post {{MMO_Idle.API_HostAddress}}/api/account/login
@@ -8,7 +8,7 @@ Content-Type: application/json
 
 {
     "userName": "jim96",
-    "password": "string"
+    "password": "1231456"
 }
 
 ### 获取角色列表
@@ -38,3 +38,13 @@ Content-Type: application/json
 Post {{MMO_Idle.API_HostAddress}}/api/characterEquipment/{{characterId}}/unequip/35
 Accept: application/json
 Content-Type: application/json
+
+### 卸下装备
+Post {{MMO_Idle.API_HostAddress}}/api/testSignalr/ReceiveMessage
+Accept: application/json
+Content-Type: application/json
+
+{
+    "user": "jim96",
+    "content": "1231456"
+}

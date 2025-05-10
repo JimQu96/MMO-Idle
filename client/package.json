@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@arco-design/web-react": "^2.66.1",
+    "@microsoft/signalr": "^8.0.7",
     "@tailwindcss/vite": "^4.1.4",
     "@types/node": "^22.15.16",
     "axios": "^1.9.0",

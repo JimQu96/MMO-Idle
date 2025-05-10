@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import style from './index.module.css';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input, Select } from '@arco-design/web-react';
 import {state, setUserInfo, setToken} from '../../store'
 import { userInfo } from '../../components/constant';
 import { register ,login} from '../../api/index';
+import { useSignalRContext } from '../../context/signalRContext';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -17,6 +18,19 @@ const Login: React.FC = () => {
   const [createRole, setCreateRole] = React.useState(0); //创建角色界面
   const [cteateList, setCreateList] = React.useState([] as any); //没角色时的占位
   const [roleList, setRoleList] = React.useState([] as any); //角色列表
+  const { connection, on, send } = useSignalRContext();
+
+  // Sample - need to update
+  useEffect(() => {
+    // 注册消息接收事件
+    const unsubscribe = on('ReceiveMessage', (user, message) => {
+      console.log("user:",user," message: ", message);
+    });
+
+    // 组件卸载时取消注册
+    return unsubscribe;
+  }, [on]);
+
   const onRegister=async(params:any)=>{
     delete params.confirmPassword;
     const res=await register(params)

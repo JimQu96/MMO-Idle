@@ -7,6 +7,7 @@ using System.Text;
 using MMOIdle.Application.Characters;
 using MMOIdle.Domain.Enums;
 using MMOIdle.API.Filters;
+using MMOIdle.API.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -19,7 +20,8 @@ builder.Services.AddCors(options =>
         {
             builder.WithOrigins(allowedOrigins)
                    .AllowAnyHeader()
-                   .AllowAnyMethod();
+                   .AllowAnyMethod()
+                   .AllowCredentials();
         });
 });
 
@@ -65,6 +67,8 @@ builder.Services.AddDbContext<GameDbContext>(options =>
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<ICharacterEquipmentService, CharacterEquipmentService>();
+// Ìí¼ÓSignalR·þÎñ×¢²á
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -82,6 +86,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseCors("AllowSpecificOrigins");
+
+app.MapHub<GameHub>("/hub");
+
 app.MapControllers();
 
 app.Run();
