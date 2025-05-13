@@ -3,6 +3,11 @@ import { state } from '../../store';
 const Card: React.FC = (props: { info: any; onCardClick: Function }) => {
   const { info, onCardClick = () => {} } = props;
   const [status, setStatus] = useState('1');
+  const textMap:any={
+    'mine':'开采',
+    'forge':'制作',
+    'fight':'战斗',
+  }
   //假设 status 1:等级不足，2立即开采，3开采中
   const statusMap: any = {
     '1': {
@@ -13,12 +18,12 @@ const Card: React.FC = (props: { info: any; onCardClick: Function }) => {
     '2': {
       bgColor: 'var(--main-bg-color)',
       color: 'var(--main-font-color)',
-      text: '立即开采',
+      text: `立即${textMap[info.attr]}`,
     },
     '3': {
       bgColor: 'var(--hover-color)',
       color: 'var(--active-color)',
-      text: '开采中',
+      text: `${textMap[info.attr]}中`,
     },
   };
     console.log('卡片信息', info);

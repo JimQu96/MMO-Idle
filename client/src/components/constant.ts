@@ -40,49 +40,7 @@ export const mineList = [
     level: 70,
   },
 ];
-export const knifeList = [
-  {
-    attr: 'forge',
-    name: '灰色小刀',
-    level: 1,
-  },
-  {
-    attr: 'forge',
-    name: '白银小刀',
-    level: 10,
-  },
-  {
-    attr: 'forge',
-    name: '翠绿小刀',
-    level: 20,
-  },
-  {
-    attr: 'forge',
-    name: '蔚蓝小刀',
-    level: 30,
-  },
-  {
-    attr: 'forge',
-    name: '深紫小刀',
-    level: 40,
-  },
-  {
-    attr: 'forge',
-    name: '绯红小刀',
-    level: 50,
-  },
-  {
-    attr: 'forge',
-    name: '粉甜小刀',
-    level: 60,
-  },
-  {
-    attr: 'forge',
-    name: '彩虹小刀',
-    level: 70,
-  },
-];
-export const pickaxeList = [
+export const hammerList = [
   {
     attr: 'forge',
     name: '灰色锤子',
@@ -121,6 +79,48 @@ export const pickaxeList = [
   {
     attr: 'forge',
     name: '彩虹锤子',
+    level: 70,
+  },
+];
+export const pickaxeList = [
+  {
+    attr: 'forge',
+    name: '灰色镐子',
+    level: 1,
+  },
+  {
+    attr: 'forge',
+    name: '白银镐子',
+    level: 10,
+  },
+  {
+    attr: 'forge',
+    name: '翠绿镐子',
+    level: 20,
+  },
+  {
+    attr: 'forge',
+    name: '蔚蓝镐子',
+    level: 30,
+  },
+  {
+    attr: 'forge',
+    name: '深紫镐子',
+    level: 40,
+  },
+  {
+    attr: 'forge',
+    name: '绯红镐子',
+    level: 50,
+  },
+  {
+    attr: 'forge',
+    name: '粉甜镐子',
+    level: 60,
+  },
+  {
+    attr: 'forge',
+    name: '彩虹镐子',
     level: 70,
   },
 ];
@@ -544,6 +544,13 @@ export const footList = [
     level: 70,
   },
 ];
+export const fightList = [
+  {
+    attr: 'fight',
+    name: '普通难度',
+    level: 1,
+  },
+];
 export const menuCardMap = {
   mine: {
     cardList: mineList,
@@ -561,8 +568,8 @@ export const menuCardMap = {
           },
           {
             key: '1-2',
-            title: '小刀',
-            cardList: knifeList,
+            title: '锤子',
+            cardList: hammerList,
           },
         ],
       },
@@ -630,6 +637,15 @@ export const menuCardMap = {
       },
     ],
   },
+  fight:{
+    subMenu:[
+      {
+        key:'1',
+        title:'剃刀沼泽',
+        cardList:fightList
+      }
+    ]
+  }
 };
 export const userInfo = {
   name: '毛里趴',
@@ -655,6 +671,9 @@ export const userInfo = {
     level: 10,
   },
   forge: {
+    level: 8,
+  },
+  fight: {
     level: 8,
   },
 };

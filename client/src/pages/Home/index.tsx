@@ -14,7 +14,7 @@ const Home: React.FC = () => {
   const [cardList, setCardList] = useState<object[]>(menuCardMap['mine'].cardList);
   const [showPopup, setShowPopup] = useState(false);
   useEffect(() => {
-    setShowPopup(true)
+    setShowPopup(true);
   });
   const handleCardClick = (info: object) => {
     console.log('开采', info);
@@ -22,8 +22,16 @@ const Home: React.FC = () => {
   const handleMenuClick = (attr: string) => {
     console.log('点击菜单', attr);
     setActiveMenu(attr);
-    setAllParentKeys(menuCardMap[attr].subMenu.map((item: any) => item.key));
-    setCardList(menuCardMap[attr].subMenu[0].children[0].cardList);
+    if (menuCardMap[attr].subMenu) {
+      setAllParentKeys(menuCardMap[attr].subMenu.map((item: any) => item.key));
+      if (menuCardMap[attr].subMenu[0].children) {
+        setCardList(menuCardMap[attr].subMenu[0].children[0].cardList);
+      } else {
+        setCardList(menuCardMap[attr].subMenu[0].cardList);
+      }
+    } else {
+      setCardList(menuCardMap[attr].cardList);
+    }
   };
   return (
     <div className="">
