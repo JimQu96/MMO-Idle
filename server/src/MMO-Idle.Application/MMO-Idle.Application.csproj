@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="11.0.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.1.2" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.1.2" />
   </ItemGroup>
@@ -15,6 +16,10 @@
   <ItemGroup>
     <ProjectReference Include="..\MMO-Idle.Domain\MMO-Idle.Domain.csproj" />
     <ProjectReference Include="..\MMO-Idle.Infrastructure\MMO-Idle.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Characters\Commands\" />
   </ItemGroup>
 
 </Project>

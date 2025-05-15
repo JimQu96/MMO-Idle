@@ -1,4 +1,4 @@
-namespace MMOIdle.Application.Accounts.Dtos;
+namespace MMO_Idle.Application.DTOs;
 
 public class RegisterAccountDto
 {
@@ -19,4 +19,4 @@ public class AccountResponseDto
     public DateTime CreatedAt { get; set; }
     public DateTime? LastLoginAt { get; set; }
     public string? Token { get; set; }
-} 
+}

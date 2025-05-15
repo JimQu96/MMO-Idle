@@ -1,6 +1,6 @@
 using MMOIdle.Domain.Enums;
 
-namespace MMOIdle.Application.Characters.DTOs;
+namespace MMO_Idle.Application.DTOs;
 
 public class EquipmentDto
 {

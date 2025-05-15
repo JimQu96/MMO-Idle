@@ -8,6 +8,9 @@ using MMOIdle.Application.Characters;
 using MMOIdle.Domain.Enums;
 using MMOIdle.API.Filters;
 using MMOIdle.API.Hubs;
+using MediatR;
+using System.Reflection;
+using MMOIdle.Application.Characters.Commands;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -61,6 +64,7 @@ builder.Services.AddDbContext<GameDbContext>(options =>
     .MapEnum<ItemType>("item_type")
     .MapEnum<EquipmentSlot>("equipment_slot")
     .MapEnum<ItemQuality>("item_quality")
+    .MapEnum<LifeSkillType>("life_skill_type")
     ));
 
 // Register Application Services
@@ -69,6 +73,9 @@ builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<ICharacterEquipmentService, CharacterEquipmentService>();
 // Ìí¼ÓSignalR·þÎñ×¢²á
 builder.Services.AddSignalR();
+
+// ×¢²á MediatR
+builder.Services.AddMediatR(typeof(AddCharacterCommand).Assembly);
 
 var app = builder.Build();
 

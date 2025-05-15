@@ -19,4 +19,8 @@ public class Character
     
     // Navigation property
     public virtual Account? Account { get; set; }
+
+    public  ICollection<CharacterBackpack> CharacterBackpacks { get; }
+    public  ICollection<CharacterEquipment> CharacterEquipments { get; }
+    public  ICollection<CharacterSkill> CharacterSkills { get; }
 } 

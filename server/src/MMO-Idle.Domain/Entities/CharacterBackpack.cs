@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MMO_Idle.Domain.Entities
+namespace MMOIdle.Domain.Entities
 {
     public class CharacterBackpack
     {

@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
-using MMOIdle.Application.Accounts.Dtos;
+using MMO_Idle.Application.DTOs;
 using MMOIdle.Domain.Entities;
 using MMOIdle.Infrastructure.Persistence;
 
@@ -72,26 +72,6 @@ public class AccountService : IAccountService
             LastLoginAt = account.LastLoginAt,
             Token = token
         };
-    }
-
-    public async Task<List<CharacterDto>> GetCharactersByAccountIdAsync(Guid accountId)
-    {
-        var characters = await _context.Characters
-            .Where(c => c.AccountId == accountId)
-            .Select(c => new CharacterDto
-            {
-                Id = c.Id,
-                Name = c.Name,
-                Class = c.Class,
-                Level = c.Level,
-                Experience = c.Experience,
-                CreatedAt = c.CreatedAt,
-                LastLoginAt = c.LastLoginAt,
-                IsActive = c.IsActive
-            })
-            .ToListAsync();
-
-        return characters;
     }
 
     private static string HashPassword(string password)

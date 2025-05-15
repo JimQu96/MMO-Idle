@@ -1,5 +1,5 @@
 @MMO_Idle.API_HostAddress = https://localhost:7043
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTk2YjQyOC1jNzBkLTc1YzEtYjlmZi03YWNmNWFlZWNkMGMiLCJ1bmlxdWVfbmFtZSI6ImppbTk2IiwianRpIjoiNTZhYzQxZjEtYjJmOS00OGM3LTk4NjMtOTQwYWExMjY0NmJmIiwiZXhwIjoxNzQ2ODA3OTM3LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MDQzIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA0MyJ9.uInoljaK6EuXZcjZA0aj58Sr0wDjy7s-Usg4GifHoK8
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTk2YjQyOC1jNzBkLTc1YzEtYjlmZi03YWNmNWFlZWNkMGMiLCJ1bmlxdWVfbmFtZSI6ImppbTk2IiwianRpIjoiNGJlZmQxMWItNTllMS00YTg2LTk4ZDktMjRlY2VkMTAwZjRiIiwiZXhwIjoxNzQ3MzI0MjE4LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MDQzIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA0MyJ9.lgSXf4khybWaXnL_9xIOMYAdRHwvnnGB87azqJWnUyw
 @characterId = 278b9b5c-1852-45f7-8697-2363956a5240
 ### 登录
 Post {{MMO_Idle.API_HostAddress}}/api/account/login
@@ -8,7 +8,7 @@ Content-Type: application/json
 
 {
     "userName": "jim96",
-    "password": "1231456"
+    "password": "123456"
 }
 
 ### 获取角色列表
@@ -17,8 +17,21 @@ Accept: application/json
 Authorization: Bearer {{authToken}}
 
 ### 创建角色
+Post {{MMO_Idle.API_HostAddress}}/api/character/add
+Accept: application/json
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
 
-### 获取角色状态（技能等级）
+{
+    "characterName": "吉姆",
+    "class": 1
+}
+
+
+### 获取角色全部状态
+GET {{MMO_Idle.API_HostAddress}}/api/character/{{characterId}}/details
+Accept: application/json
+Authorization: Bearer {{authToken}}
 
 ### 获取角色装备信息
 GET {{MMO_Idle.API_HostAddress}}/api/characterEquipment/{{characterId}}/equipment
