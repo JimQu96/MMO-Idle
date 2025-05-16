@@ -88,11 +88,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors("AllowSpecificOrigins");
+
 // Add Authentication middleware
 app.UseAuthentication();
 app.UseAuthorization();
-
-app.UseCors("AllowSpecificOrigins");
 
 app.MapHub<GameHub>("/hub");
 

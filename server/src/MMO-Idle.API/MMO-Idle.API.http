@@ -1,18 +1,18 @@
 @MMO_Idle.API_HostAddress = https://localhost:7043
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTk2YjQyOC1jNzBkLTc1YzEtYjlmZi03YWNmNWFlZWNkMGMiLCJ1bmlxdWVfbmFtZSI6ImppbTk2IiwianRpIjoiNGJlZmQxMWItNTllMS00YTg2LTk4ZDktMjRlY2VkMTAwZjRiIiwiZXhwIjoxNzQ3MzI0MjE4LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MDQzIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA0MyJ9.lgSXf4khybWaXnL_9xIOMYAdRHwvnnGB87azqJWnUyw
-@characterId = 278b9b5c-1852-45f7-8697-2363956a5240
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTk2ZDdjMC1iYmZlLTdkM2UtYTBlZS1kMjk0NGVkZTQzNmQiLCJ1bmlxdWVfbmFtZSI6InRtMTk5NTAzIiwianRpIjoiYWZkYzQyMjYtOWM0ZC00MjdlLWE1NGQtOTYyMDFkNWQ1NjM1IiwiZXhwIjoyNTM0MDIyNzIwMDAsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcwNDMiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo3MDQzIn0.ZbcMU5JtD4geoOdhqf-SjiJwVDqk9yqkVQGXVV5LtW0
+@characterId = 0196d7dd-d664-7253-becb-7db0f2732498
 ### 登录
 Post {{MMO_Idle.API_HostAddress}}/api/account/login
 Accept: application/json
 Content-Type: application/json
 
 {
-    "userName": "jim96",
-    "password": "123456"
+    "userName": "tm199503",
+    "password": "12345678"
 }
 
 ### 获取角色列表
-GET {{MMO_Idle.API_HostAddress}}/api/account/characters
+GET {{MMO_Idle.API_HostAddress}}/api/character/list
 Accept: application/json
 Authorization: Bearer {{authToken}}
 
@@ -23,7 +23,7 @@ Authorization: Bearer {{authToken}}
 Content-Type: application/json
 
 {
-    "characterName": "吉姆",
+    "characterName": "田蜜1号",
     "class": 1
 }
 
@@ -46,13 +46,14 @@ Authorization: Bearer {{authToken}}
 Post {{MMO_Idle.API_HostAddress}}/api/characterEquipment/{{characterId}}/equip/35
 Accept: application/json
 Content-Type: application/json
+Authorization: Bearer {{authToken}}
 
 ### 卸下装备
 Post {{MMO_Idle.API_HostAddress}}/api/characterEquipment/{{characterId}}/unequip/35
 Accept: application/json
 Content-Type: application/json
 
-### 卸下装备
+### test signalR
 Post {{MMO_Idle.API_HostAddress}}/api/testSignalr/ReceiveMessage
 Accept: application/json
 Content-Type: application/json
