@@ -3,6 +3,8 @@ import './App.css';
 import './style/skin/dark.css'; // 直接引入，确保最早加载
 import { SignalRProvider } from './context/signalRContext';
 function App() {
+  // 设置为暗黑主题
+document.body.setAttribute('arco-theme', 'dark');
   // const custom='dark';
   // useEffect(() => {
   //   import(`./style/skin/${custom}.css`)

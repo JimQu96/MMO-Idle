@@ -16,7 +16,11 @@ body {
 .arco-menu-inner {
   overflow-y: auto;
 }
-.arco-menu .arco-menu-inline .arco-menu-item,
+
+.arco-tabs-header-nav::before {
+  height: 0;
+}
+/* .arco-menu .arco-menu-inline .arco-menu-item,
 .arco-menu-dark .arco-menu-inline-header.arco-menu-selected,
 .arco-menu-dark .arco-menu-inline-header.arco-menu-selected .arco-icon,
 .arco-tabs-header-title-active,
@@ -25,11 +29,8 @@ body {
 }
 .arco-tabs-header-ink {
   background-color: var(--main-font-color);
-}
-.arco-tabs-header-nav::before {
-  height: 0;
-}
-.arco-tabs-header-nav-line .arco-tabs-header-title:hover .arco-tabs-header-title-text::before {
+}*/
+/* .arco-tabs-header-nav-line .arco-tabs-header-title:hover .arco-tabs-header-title-text::before {
   background-color: var(--hover-color);
 }
 .arco-menu .arco-menu-inline-header {
@@ -58,21 +59,21 @@ body {
 .arco-input.arco-input-focus{
   border-color: var(--main-font-color);
 }
-.arco-select-size-default.arco-select-single .arco-select-view {
-  height: 48px;
-  line-height: 48px;
-}
 .arco-select-popup,
 .arco-select-popup .arco-select-option {
   border: 1px solid var(--sub-bg-color);
   background-color: var(--sub-bg-color);
   color: var(--main-font-color);
+}*/
+.arco-select-size-default.arco-select-single .arco-select-view {
+  height: 48px;
+  line-height: 48px;
 }
 .arco-dropdown-menu {
   background-color: var(--sub-bg-color);
   border-color: var(--sub-bg-color);
   max-height: fit-content;
-}
+} 
 /* 隐藏所有浏览器的滚动条 */
 .hide-scrollbar {
   overflow-y: auto; /* 或 scroll，根据需要选择 */

@@ -1,4 +1,4 @@
-import { Menu } from '@arco-design/web-react';
+import { Menu, Progress } from '@arco-design/web-react';
 import style from './index.module.css';
 import mineIcon from '../../assets/mine.svg';
 import forgeIcon from '../../assets/forge.svg';
@@ -8,15 +8,9 @@ import { state } from '../../store';
 interface MenuItem {
   key: string;
   title: string;
-  icon?: React.ReactNode;
-  children?: SubMenuItem[];
-}
-
-interface SubMenuItem {
-  key: string;
-  title: string;
   image: string; // 图片路径或URL
-  attr:string;
+  attr: string;
+  disabled: boolean;
 }
 
 const LeftMenu: React.FC = (props: { onMenuClick: Function }) => {
@@ -24,73 +18,91 @@ const LeftMenu: React.FC = (props: { onMenuClick: Function }) => {
   const menuItems: MenuItem[] = [
     {
       key: '1',
-      title: '生活技能',
-      children: [
-        {
-          key: '1-1',
-          title: `采矿Lv.${state.userInfo.mine?.level<10?'0':''}${state.userInfo.mine?.level}`,
-          image: mineIcon,
-          attr:'mine'
-        },
-        {
-          key: '1-2',
-          title: `锻造Lv.${state.userInfo.forge?.level<10?'0':''}${state.userInfo.forge?.level}`,
-          image: forgeIcon,
-          attr:'forge'
-        },
-      ],
+      title: state.userInfo.name,
+      image: '',
+      attr: 'disable',
+      disabled: true,
     },
     {
       key: '2',
+      title: `${state.userInfo.job}Lv.${state.userInfo.level}`,
+      image: mineIcon,
+      disabled: true,
+      attr: 'mine',
+    },
+    {
+      key: '3',
+      title: '生活技能',
+      image: '',
+      attr: 'disable',
+      disabled: true,
+    },
+    {
+      key: '4',
+      title: `采矿Lv.${state.userInfo.mine?.level < 10 ? '0' : ''}${state.userInfo.mine?.level}`,
+      image: mineIcon,
+      attr: 'mine',
+      disabled: false,
+    },
+    {
+      key: '5',
+      title: `锻造Lv.${state.userInfo.forge?.level < 10 ? '0' : ''}${state.userInfo.forge?.level}`,
+      image: forgeIcon,
+      attr: 'forge',
+      disabled: false,
+    },
+    {
+      key: '6',
       title: '副本',
-      children: [
-        {
-          key: '2-1',
-          title: '地下城',
-          image: dungeonscon,
-          attr:'fight'
-        },
-      ],
+      image: '',
+      attr: 'disable',
+      disabled: true,
+    },
+    {
+      key: '7',
+      title: '地下城',
+      image: dungeonscon,
+      attr: 'fight',
+      disabled: false,
     },
   ];
   const allParentKeys = menuItems.map(item => item.key);
-  const CustomMenuItem = ({ attr, title, image }: SubMenuItem) => (
+  const CustomMenuItem = ({ attr, title, image }: MenuItem) => (
     <div
-      style={{ display: 'flex', alignItems: 'center', gap: 8 }}
       onClick={() => {
-        onMenuClick(attr);
+        if (attr !== 'disable') {
+          onMenuClick(attr);
+        }
       }}>
-      <img
-        src={image}
-        alt={title}
-        style={{
-          width: 22,
-          height: 22,
-          borderRadius: 4,
-          objectFit: 'cover',
-        }}
-      />
-      <span>{title}</span>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        {image && (
+          <img
+            src={image}
+            alt={title}
+            style={{
+              width: 22,
+              height: 22,
+              borderRadius: 4,
+              objectFit: 'cover',
+            }}
+          />
+        )}
+        <span style={{ color: attr === 'disable' ? 'var(--sub-font-color)' : 'var(--main-font-color)' }}>{title}</span>
+      </div>
+      {attr !== 'disable' && (
+        <div className="relative w-full h-[6px] bg-[var(--third-font-color)] rounded-b-[2px] mb-[10px]">
+          <div className='absolute h-full top-0 left-0 w-[30px] bg-[var(--active-color)]'></div>
+        </div>
+      )}
     </div>
   );
   return (
     <div className={style.leftMenu}>
-      <Menu style={{ height: '100%' }} theme="dark" autoOpen={true} defaultOpenKeys={allParentKeys} defaultSelectedKeys={['1-1']}>
+      <Menu style={{ height: '100%' }} theme="dark" autoOpen={true} defaultOpenKeys={allParentKeys} defaultSelectedKeys={['4']}>
         {menuItems.map(item => (
-          <Menu.SubMenu
-            key={item.key}
-            title={
-              <span>
-                {item.icon}
-                {item.title}
-              </span>
-            }>
-            {item.children?.map(sub => (
-              <Menu.Item key={sub.key}>
-                <CustomMenuItem {...sub} />
-              </Menu.Item>
-            ))}
-          </Menu.SubMenu>
+          <Menu.Item key={item.key} disabled={item.disabled} style={{cursor:item.disabled?'auto':'pointer'}}>
+            <CustomMenuItem {...item} />
+          </Menu.Item>
         ))}
       </Menu>
     </div>

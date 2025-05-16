@@ -7,20 +7,32 @@ import RightColumns from '../../components/RightColumns/RightColumns';
 import { userInfo, menuCardMap } from '../../components/constant';
 import Chat from '../../components/Chat/Chat';
 import Popup from '../../components/Popup/Popup';
+import Fight from '../../components/Fight/Fight';
 
 const Home: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState('mine');
   const [allParentKeys, setAllParentKeys] = useState<string[]>([]);
   const [cardList, setCardList] = useState<object[]>(menuCardMap['mine'].cardList);
   const [showPopup, setShowPopup] = useState(false);
+  const [showFight, setShowFight] = useState(false);
+  const [fightInfo, setFightInfo]=useState({});
   useEffect(() => {
     setShowPopup(true);
   });
-  const handleCardClick = (info: object) => {
-    console.log('开采', info);
+  const handleCardClick = (info: any) => {
+    console.log('点击卡片', info);
+    if(info.attr==='fight'){
+      setShowFight(true)
+      setFightInfo(info)
+    }else{
+      setShowFight(false);
+    }
   };
   const handleMenuClick = (attr: string) => {
     console.log('点击菜单', attr);
+    if(attr!=='fight'){
+      setShowFight(false);
+    }
     setActiveMenu(attr);
     if (menuCardMap[attr].subMenu) {
       setAllParentKeys(menuCardMap[attr].subMenu.map((item: any) => item.key));
@@ -38,10 +50,16 @@ const Home: React.FC = () => {
       <Navbar userInfo={userInfo} />
       <div className="flex justify-between">
         <LeftMenu onMenuClick={handleMenuClick} />
-        <div className="p-[20px] flex-1 relative">
+        <div className="p-[20px_0] flex-1 relative">
           {/* 主内容区域 */}
-          {menuCardMap[activeMenu].subMenu ? (
-            <div className="flex justify-between" style={{ height: 'calc(100vh - 360px)' }}>
+
+          {showFight?(
+            <>
+              {/* 战斗页面 */}
+              <Fight info={fightInfo} />
+            </>
+          ): menuCardMap[activeMenu].subMenu ? (
+            <div className="flex justify-between" style={{ height: 'calc(100vh - 380px)' }}>
               <Menu
                 style={{ width: 220, height: '100%' }}
                 theme="dark"
@@ -74,9 +92,9 @@ const Home: React.FC = () => {
               </Menu>
               <div
                 className="flex-1 overflow-y-scroll grid justify-center gap-[20px] hide-scrollbar"
-                style={{ maxHeight: 'calc(100vh - 360px)', gridTemplateColumns: 'repeat(auto-fit, 300px)', gridAutoRows: 'min-content' }}>
+                style={{ maxHeight: 'calc(100vh - 380px)', gridTemplateColumns: 'repeat(auto-fit, 245px)', gridAutoRows: 'min-content' }}>
                 {cardList.map(item => (
-                  <Card info={item} onCardClick={handleCardClick} />
+                  <Card info={item} width={245} onCardClick={handleCardClick} />
                 ))}
               </div>
             </div>
@@ -84,9 +102,9 @@ const Home: React.FC = () => {
             <>
               <div
                 className="grid justify-center gap-[20px]"
-                style={{ maxHeight: 'calc(100vh - 360px)', gridTemplateColumns: 'repeat(auto-fit, 300px)', gridAutoRows: 'min-content' }}>
+                style={{ maxHeight: 'calc(100vh - 380px)', gridTemplateColumns: 'repeat(auto-fit, 300px)', gridAutoRows: 'min-content' }}>
                 {cardList.map(item => (
-                  <Card info={item} onCardClick={handleCardClick} />
+                  <Card info={item} width={300} onCardClick={handleCardClick} />
                 ))}
               </div>
             </>

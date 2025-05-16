@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { state } from '../../store';
-const Card: React.FC = (props: { info: any; onCardClick: Function }) => {
-  const { info, onCardClick = () => {} } = props;
+const Card: React.FC = (props: { info: any; width:any, onCardClick: Function }) => {
+  const { info, width, onCardClick = () => {} } = props;
   const [status, setStatus] = useState('1');
   const textMap:any={
     'mine':'开采',
@@ -39,14 +39,14 @@ const Card: React.FC = (props: { info: any; onCardClick: Function }) => {
   }, [info]);
   return (
     <div
-      className="flex justify-between w-[300px] h-[104px] bg-[var(--main-bg-color)] border-[1px] border-solid border-[var(--card-border-color)] rounded-[10px] p-[20px]"
-      style={{ backgroundColor: statusMap[status].bgColor }}
+      className="flex justify-between h-[104px] bg-[var(--main-bg-color)] border-[1px] border-solid border-[var(--card-border-color)] rounded-[10px] p-[20px]"
+      style={{ backgroundColor: statusMap[status].bgColor, width:width }}
       onClick={() => {
         if (status === '2') {
           onCardClick(info);
         }
       }}>
-      <div>{info.name}</div>
+      <div style={{color:info.color}}>{info.name}</div>
       <div>
         <div className="mb-[20px]">Lv.{info.level<10?'0':''}{info.level}</div>
         {/* 假设 status 1:等级不足，2立即开采，3开采中 */}

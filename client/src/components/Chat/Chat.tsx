@@ -8,7 +8,7 @@ const Chat: React.FC = () => {
       title: `世界`,
       key: `0`,
       content: (
-        <div className="w-full h-[142px]">
+        <div className="w-full h-[170px]">
           <div className="flex">
             <div className='text-[var(--sub-font-color)] shrink-0 mr-[4px]'>[11:00:00]</div>
             <div>这里是要说的话...这里是要说的话...这里是要说的话...这里是要说的话...这里是要说的话...这里是要说的话...</div>
@@ -24,7 +24,7 @@ const Chat: React.FC = () => {
   ];
   useEffect(() => {});
   return (
-    <div className="w-full h-[300px] p-[20px] absolute bottom-0">
+    <div className="w-full h-[300px] p-[12px_20px] absolute bottom-0 border-[1px_0px_0px_0px] border-solid border-[var(--hover-color)]">
       <Tabs activeTab={activeTab} onChange={setActiveTab}>
         {tabItems.map((item, index) => (
           <TabPane destroyOnHide key={item.key} title={item.title}>
