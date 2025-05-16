@@ -13,6 +13,11 @@ interface LoginResponse {
   refreshToken: string;
   userId: number;
 }
+// 添加角色请求参数类型
+interface roleParams {
+  characterName: string;
+  class: string;
+}
 
 export const register = (params: LoginParams) => {
   return request.post('/api/Account/register', params);
@@ -23,7 +28,9 @@ export const login = (params: LoginParams) => {
 export const getCharacterList = () => {
   return request.get('/api/Character/list', {});
 };
-export const addCharacter = () => {
-  return request.post('/api/Character/add', {});
+export const addCharacter = (params:roleParams) => {
+  return request.post('/api/Character/add', params);
 };
-
+export const getCharacterDetail = (id: number) => {
+  return request.get(`/api/Character/${id}/details`, {});
+};

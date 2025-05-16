@@ -795,8 +795,8 @@ export const classOptions=[
 ]
 export const userInfo = {
   name: '毛里趴',
-  exp: 3333,
-  job: '防御战士',
+  experience: 3333,
+  class: 1,
   level: 4,
   skill: {
     passiveSkills: '每次行动护甲值增加1%，可叠加30层',

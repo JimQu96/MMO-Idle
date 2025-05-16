@@ -4,6 +4,7 @@ import mineIcon from '../../assets/mine.svg';
 import forgeIcon from '../../assets/forge.svg';
 import dungeonscon from '../../assets/dungeons.svg';
 import { state } from '../../store';
+import { classMap } from '../../components/constant';
 
 interface MenuItem {
   key: string;
@@ -25,7 +26,7 @@ const LeftMenu: React.FC = (props: { onMenuClick: Function }) => {
     },
     {
       key: '2',
-      title: `${state.userInfo.job}Lv.${state.userInfo.level}`,
+      title: `${classMap[state.userInfo.class]}Lv.${state.userInfo.level}`,
       image: mineIcon,
       disabled: true,
       attr: 'mine',

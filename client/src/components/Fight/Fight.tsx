@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Grid } from '@arco-design/web-react';
 import { IconPlus } from '@arco-design/web-react/icon';
+import { classMap } from '../../components/constant';
 import { state } from '../../store';
 const Row = Grid.Row;
 const Col = Grid.Col;
@@ -87,7 +88,7 @@ const Fight: React.FC = (props: { info: any; onBoxClick: Function }) => {
                   <div className="flex-1 border-[1px] border-solid border-[var(--main-font-color)] h-[100px] flex flex-col justify-between items-center pt-[20px]">
                     <div>{state.userInfo.name}</div>
                     <div>
-                      {state.userInfo.job}Lv.{state.userInfo.level}
+                      {classMap[state.userInfo.class]}Lv.{state.userInfo.level}
                     </div>
                     <div className="relative h-[20px] w-full bg-[var(--third-font-color)] text-center">
                       1500/5000

@@ -3,9 +3,9 @@ import { Button, Dropdown, Menu } from '@arco-design/web-react';
 import { useNavigate } from 'react-router-dom';
 import style from './index.module.css';
 import logo from '../../assets/react.svg';
-
-const Navbar: React.FC = (props: { userInfo: object }) => {
-  const { userInfo } = props;
+import { state, setToken } from '../../store';
+const Navbar: React.FC = () => {
+  const userInfo = state.userInfo;
   const navigate = useNavigate();
   const progressBarRef = useRef<HTMLDivElement | null>(null);
   const [working, setWorking] = useState(false);
@@ -15,8 +15,9 @@ const Navbar: React.FC = (props: { userInfo: object }) => {
       theme="dark"
       onClickMenuItem={(key: string) => {
         if (key === '1') {
-          console.log('click menu item', key);
+          navigate('/roleSelect');
         } else if (key === '2') {
+          setToken('');
           navigate('/login');
         }
       }}>
