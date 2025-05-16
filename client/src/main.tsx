@@ -5,6 +5,7 @@ import './index.css'
 import App from './App.tsx'
 import Login from './components/Login/Login.tsx'
 import Home from './pages/Home/index.tsx'
+import RoleSelect from './components/RoleSelect/RoleSelect.tsx'
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/roleSelect",
+        element: <RoleSelect />,
       },
     ],
   },

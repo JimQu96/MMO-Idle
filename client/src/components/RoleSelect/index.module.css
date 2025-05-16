@@ -1,0 +1,28 @@
+.login-box {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--main-bg-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-font-color);
+}
+.input {
+  height: 48px;
+  background-color: var(--sub-bg-color);
+  color: var(--main-font-color);
+}
+.rule-box {
+  width: 240px;
+  height: 100px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  border: 1px solid var(--sub-font-color);
+  margin: 20px 0;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

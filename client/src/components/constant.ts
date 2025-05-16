@@ -784,6 +784,15 @@ export const menuCardMap = {
     ],
   },
 };
+export const classMap={
+  1:'防御战士'
+}
+export const classOptions=[
+  {
+    value: 1,
+    label: '防御战士',
+  },
+]
 export const userInfo = {
   name: '毛里趴',
   exp: 3333,

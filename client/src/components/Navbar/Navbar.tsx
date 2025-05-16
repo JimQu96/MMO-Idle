@@ -11,6 +11,7 @@ const Navbar: React.FC = (props: { userInfo: object }) => {
   const [working, setWorking] = useState(false);
   const dropList = (
     <Menu
+      style={{ width: 200 }}
       theme="dark"
       onClickMenuItem={(key: string) => {
         if (key === '1') {
@@ -67,7 +68,7 @@ const Navbar: React.FC = (props: { userInfo: object }) => {
             </Button>
           </div>
         ) : (
-          <div>正在发呆中</div>
+          <div>正在发呆中...</div>
         )}
       </div>
       {/* 个人信息 */}

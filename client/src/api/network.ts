@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const instance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   timeout: 10000,
@@ -26,6 +27,7 @@ instance.interceptors.response.use(
   error => {
     // 处理HTTP状态码
     if (error.response) {
+          console.log('401');
       switch (error.response.status) {
         case 401:
           localStorage.removeItem('token'); // 清除过期凭证:ml-citation{ref="1,8" data="citationList"}
