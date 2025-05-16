@@ -6,6 +6,7 @@ import App from './App.tsx'
 import Login from './components/Login/Login.tsx'
 import Home from './pages/Home/index.tsx'
 import RoleSelect from './components/RoleSelect/RoleSelect.tsx'
+import TestSignalR from './components/testSignalR/testSignalR'; 
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/roleSelect",
         element: <RoleSelect />,
+      },
+      {
+        path: "/testSignalR", 
+        element: <TestSignalR />,
       },
     ],
   },

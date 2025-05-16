@@ -1,9 +1,14 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
+using MMO_Idle.Application.DTOs;
 
 namespace MMOIdle.API.Hubs
 {
     public class GameHub : Hub
     {
+
+        private Guid _characterId;
+
         /// <summary>
         /// 客户端调用此方法发送消息到所有连接客户端
         /// </summary>
@@ -15,11 +20,28 @@ namespace MMOIdle.API.Hubs
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
 
+        public async Task StartAction(StartActionMessageDto startActionMessageDto)
+        {
+
+        }
+
         /// <summary>
         /// 客户端连接时触发（可选扩展）
         /// </summary>
         public override async Task OnConnectedAsync()
         {
+            if (Context.GetHttpContext().Request.Query.TryGetValue("characterId", out var characterIdValue))
+            {
+                if (Guid.TryParse(characterIdValue, out var characterId))
+                {
+                    _characterId = characterId;
+                }
+                else
+                {
+                    Context.Abort();
+                }
+            }
+
             // 可在此处添加连接日志记录、用户关联等逻辑
             await base.OnConnectedAsync();
         }

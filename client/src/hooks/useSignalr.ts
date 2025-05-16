@@ -14,7 +14,7 @@ export interface SignalRHookResult {
   error: Error | null;
   on: (eventName: string, callback: EventCallback) => () => void;
   send: <T extends any[]>(methodName: string, ...args: T) => Promise<void>;
-  start: () => Promise<void>;
+  start: (characterId: string) => Promise<void>;
   stop: () => Promise<void>;
 }
 
@@ -74,9 +74,9 @@ const useSignalR = (hubUrl: string): SignalRHookResult => {
   }, [hubUrl, connection]);
 
   // 启动连接
-  const start = useCallback(async () => {
+  const start = useCallback(async (characterId?: string) => {
     if (status === 'connected' || status === 'connecting') return;
-    
+    hubUrl = characterId && !hubUrl.includes("characterId") ? `${hubUrl}?characterId=${characterId}` : hubUrl;
     try {
       setStatus('connecting');
       const conn = createConnection();
@@ -159,7 +159,6 @@ const useSignalR = (hubUrl: string): SignalRHookResult => {
 
   // 生命周期管理
   useEffect(() => {
-    start();
     
     // 清理函数
     return () => {

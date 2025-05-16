@@ -31,6 +31,6 @@ export const getCharacterList = () => {
 export const addCharacter = (params:roleParams) => {
   return request.post('/api/Character/add', params);
 };
-export const getCharacterDetail = (id: number) => {
+export const getCharacterDetail = (id: string) => {
   return request.get(`/api/Character/${id}/details`, {});
 };

@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input } from '@arco-design/web-react';
 import { state, setUserInfo, setToken } from '../../store';
 import { register, login } from '../../api/index';
-import { useSignalRContext } from '../../context/signalRContext';
 
 const FormItem = Form.Item;
 
@@ -12,21 +11,10 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [hasAccount, setHasAccount] = React.useState(false); //是否注册过
-  const { connection, on, send } = useSignalRContext();
   const [errors, setErrors] = React.useState({
     userName: '',
     password: '',
   });
-  // Sample - need to update
-  useEffect(() => {
-    // 注册消息接收事件
-    const unsubscribe = on('ReceiveMessage', (user, message) => {
-      console.log('user:', user, ' message: ', message);
-    });
-
-    // 组件卸载时取消注册
-    return unsubscribe;
-  }, [on]);
 
   const onRegister = async (params: any) => {
     delete params.confirm_password;
