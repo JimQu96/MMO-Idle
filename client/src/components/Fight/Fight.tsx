@@ -19,7 +19,7 @@ const Fight: React.FC = (props: { info: any; onBoxClick: Function }) => {
         </Button>
         <Button onClick={() => {}}>立即停止</Button>
         <div className="flex justify-between mt-[20px]">
-          <div>剃刀沼泽</div>
+          <div>{info.title}</div>
           <div>{info.name}</div>
         </div>
         <div className="mt-[20px] w-full pb-[10px] border-[0px_0px_1px_0px] border-solid border-[var(--hover-color)]">

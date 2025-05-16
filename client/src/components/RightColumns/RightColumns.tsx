@@ -315,10 +315,10 @@ const Card: React.FC = () => {
   ];
   useEffect(() => {});
   return (
-    <div className="w-[400px] p-[20px] shrink-0  border-[0px_0px_0px_1px] border-solid border-[var(--hover-color)]">
+    <div className="w-[400px] p-[20px_4px] shrink-0  border-[0px_0px_0px_1px] border-solid border-[var(--hover-color)]">
       <Tabs activeTab={activeTab} onChange={setActiveTab}>
         {tabItems.map((item, index) => (
-          <TabPane destroyOnHide key={item.key} title={item.title}>
+          <TabPane style={{padding: '0 16px'}} destroyOnHide key={item.key} title={item.title}>
             {item.content}
           </TabPane>
         ))}

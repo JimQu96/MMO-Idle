@@ -651,6 +651,7 @@ export const footList = [
 export const fightList = [
   {
     attr: 'fight',
+    title: '剃刀沼泽',
     name: '普通难度',
     level: 1,
     monsterList: [
@@ -694,78 +695,78 @@ export const menuCardMap = {
   forge: {
     subMenu: [
       {
-        key: '1',
+        key: 'tools',
         title: '工具',
         children: [
           {
-            key: '1-1',
+            key: 'pickaxe',
             title: '镐子',
             cardList: pickaxeList,
           },
           {
-            key: '1-2',
+            key: 'hammer',
             title: '锤子',
             cardList: hammerList,
           },
         ],
       },
       {
-        key: '2',
+        key: 'weapons',
         title: '武器',
         children: [
           {
-            key: '2-1',
+            key: 'singleSword',
             title: '单手剑',
             cardList: singleSwordList,
           },
           {
-            key: '2-2',
+            key: 'shield',
             title: '盾牌',
             cardList: shieldList,
           },
         ],
       },
       {
-        key: '3',
+        key: 'plate',
         title: '板甲',
         children: [
           {
-            key: '3-1',
+            key: 'head',
             title: '头部',
             cardList: headList,
           },
           {
-            key: '3-2',
+            key: 'shoulder',
             title: '肩部',
             cardList: shoulderList,
           },
           {
-            key: '3-3',
+            key: 'chest',
             title: '胸部',
             cardList: chestList,
           },
           {
-            key: '3-4',
+            key: 'wrist',
             title: '腕部',
             cardList: wristList,
           },
           {
-            key: '3-5',
+            key: 'waist',
             title: '腰部',
             cardList: waistList,
           },
           {
-            key: '3-6',
+            key: 'hand',
             title: '手部',
             cardList: handList,
           },
           {
-            key: '3-7',
+            key: 'leg',
             title: '腿部',
             cardList: legList,
           },
           {
-            key: '3-8',
+            key: 'foot',
             title: '脚部',
             cardList: footList,
           },
@@ -776,7 +777,7 @@ export const menuCardMap = {
   fight: {
     subMenu: [
       {
-        key: '1',
+        key: 'razorfenKraul',
         title: '剃刀沼泽',
         cardList: fightList,
       },
