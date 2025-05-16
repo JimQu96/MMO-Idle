@@ -1,6 +1,6 @@
 using MMOIdle.Domain.Enums;
 
-namespace MMOIdle.Application.Accounts.Dtos;
+namespace MMO_Idle.Application.DTOs;
 
 public class CharacterDto
 {
@@ -12,4 +12,4 @@ public class CharacterDto
     public DateTime CreatedAt { get; set; }
     public DateTime? LastLoginAt { get; set; }
     public bool IsActive { get; set; }
-} 
+}

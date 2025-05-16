@@ -8,16 +8,15 @@ using System.Threading.Tasks;
 
 namespace MMOIdle.Domain.Entities
 {
-    public class CharacterEquipment
+    public class CharacterSkill
     {
         public long Id { get; set; }
         public Guid CharacterId { get; set; }
-        public required EquipmentSlot Slot { get; set; }
-        public long ItemId { get; set; }
-        public DateTime EquippedAt { get; set; } = DateTime.Now;
-
-        // 导航属性（可选）
+        public LifeSkillType SkillType { get; set; }
+        public int Level { get; set; } = 1;
+        public int Experience { get; set; } = 0;
+        public DateTime LastUpdated { get; set; } = DateTime.UtcNow;
         public virtual Character? Character { get; set; }
-        public virtual GameItem? Item { get; set; }
     }
+
 }

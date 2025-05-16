@@ -1,8 +1,8 @@
-using MMOIdle.Application.Characters.DTOs;
 using MMOIdle.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using MMO_Idle.Domain.Entities;
+using MMOIdle.Domain.Entities;
 using MMOIdle.Domain.Enums;
+using MMO_Idle.Application.DTOs;
 
 namespace MMOIdle.Application.Characters;
 

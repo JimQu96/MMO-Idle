@@ -5,7 +5,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace MMO_Idle.Infrastructure.Migrations
+namespace MMOIdle.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using MMO_Idle.Domain.Entities;
+using MMOIdle.Domain.Entities;
 using MMOIdle.Domain.Entities;
 
 namespace MMOIdle.Infrastructure.Persistence;
@@ -11,6 +11,8 @@ public class GameDbContext : DbContext
     public DbSet<CharacterBackpack> CharacterBackpacks { get; set; } = null!;
     public DbSet<CharacterEquipment> CharacterEquipments { get; set; } = null!;
     public DbSet<GameItem> GameItems { get; set; } = null!;
+    public DbSet<CharacterSkill> CharacterSkills { get; set; } = null!;
+    public DbSet<SkillLevelRequirement> SkillLevelRequirements { get; set; } = null!;
 
     public GameDbContext(DbContextOptions<GameDbContext> options) : base(options)
     {
@@ -26,7 +28,6 @@ public class GameDbContext : DbContext
         // Account configurations
         modelBuilder.Entity<Account>(entity =>
         {
-            //entity.ToTable("accounts");
             entity.HasKey(e => e.Id);
             entity.HasIndex(e => e.UserName).IsUnique();
             entity.Property(e => e.UserName).IsRequired().HasMaxLength(50);
@@ -45,15 +46,31 @@ public class GameDbContext : DbContext
                   .WithMany(a => a.Characters)
                   .HasForeignKey(e => e.AccountId)
                   .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasMany(e => e.CharacterSkills)
+                  .WithOne(a => a.Character)
+                  .HasForeignKey(e => e.CharacterId)
+                  .HasPrincipalKey(e => e.Id);
+
+            entity.HasMany(e => e.CharacterBackpacks)
+                  .WithOne(a => a.Character)
+                  .HasForeignKey(e => e.CharacterId)
+                  .HasPrincipalKey(e => e.Id);
+
+            entity.HasMany(e => e.CharacterEquipments)
+                  .WithOne(a => a.Character)
+                  .HasForeignKey(e => e.CharacterId)
+                  .HasPrincipalKey(e => e.Id);
+
         });
 
         modelBuilder.Entity<CharacterBackpack>(entity =>
         {
             entity.HasKey(e => e.Id);
 
-            // Relationship with Account
+            // Relationship with Character
             entity.HasOne(b => b.Character)
-               .WithMany()
+               .WithMany(x => x.CharacterBackpacks)
                .HasForeignKey(b => b.CharacterId)
                .OnDelete(DeleteBehavior.NoAction);
 
@@ -67,9 +84,9 @@ public class GameDbContext : DbContext
         {
             entity.HasKey(e => e.Id);
 
-            // Relationship with Account
+            // Relationship with Character
             entity.HasOne(b => b.Character)
-               .WithMany()
+               .WithMany(x => x.CharacterEquipments)
                .HasForeignKey(b => b.CharacterId)
                .OnDelete(DeleteBehavior.NoAction);
 
@@ -82,6 +99,23 @@ public class GameDbContext : DbContext
         modelBuilder.Entity<GameItem>(entity =>
         {
             entity.HasKey(e => e.Id);
+        });
+
+        modelBuilder.Entity<CharacterSkill>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+
+            entity.HasOne(b => b.Character)
+               .WithMany(x => x.CharacterSkills)
+               .HasForeignKey(b => b.CharacterId)
+               .OnDelete(DeleteBehavior.NoAction);
+        });
+
+        modelBuilder.Entity<SkillLevelRequirement>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Level).IsRequired();
+            entity.Property(e => e.RequiredExperience).IsRequired();
         });
     }
 }

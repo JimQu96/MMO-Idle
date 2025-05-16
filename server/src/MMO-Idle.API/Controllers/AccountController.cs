@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MMO_Idle.Application.DTOs;
 using MMOIdle.Application.Accounts;
-using MMOIdle.Application.Accounts.Dtos;
 using System.Security.Claims;
 
 namespace MMOIdle.API.Controllers;
@@ -30,22 +30,6 @@ public class AccountController : ControllerBase
 
         var result = await _accountService.LoginAsync(dto);
         return Ok(result);
-
-    }
-
-    [Authorize]
-    [HttpGet("characters")]
-    public async Task<ActionResult<List<CharacterDto>>> GetCharacters()
-    {
-        // 从token中获取用户ID
-        var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-        if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out Guid accountId))
-        {
-            return Unauthorized(new { message = "Invalid token or user ID not found" });
-        }
-
-        var characters = await _accountService.GetCharactersByAccountIdAsync(accountId);
-        return Ok(characters);
 
     }
 }

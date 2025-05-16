@@ -1,4 +1,4 @@
-using MMOIdle.Application.Characters.DTOs;
+using MMO_Idle.Application.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

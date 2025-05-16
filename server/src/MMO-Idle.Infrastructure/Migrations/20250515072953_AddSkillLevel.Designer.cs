@@ -13,8 +13,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MMOIdle.Infrastructure.Migrations
 {
     [DbContext(typeof(GameDbContext))]
-    [Migration("20250509082009_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250515072953_AddSkillLevel")]
+    partial class AddSkillLevel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,6 +28,7 @@ namespace MMOIdle.Infrastructure.Migrations
             NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "item_category", new[] { "chest", "currency", "feet", "hammer", "hands", "head", "legs", "one_handed_sword", "ore", "pickaxe", "shield", "shoulder", "waist", "wrist" });
             NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "item_quality", new[] { "blue", "gray", "green", "normal", "orange", "purple", "rainbow", "red", "white" });
             NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "item_type", new[] { "consumable", "currency", "equipment", "material", "other" });
+            NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "life_skill_type", new[] { "alchemy", "blacksmithing", "cooking", "crafting", "farming", "fishing", "gathering", "hunting", "mining", "tailoring" });
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("MMOIdle.Domain.Entities.Account", b =>
@@ -206,6 +207,44 @@ namespace MMOIdle.Infrastructure.Migrations
                     b.ToTable("character_equipments", (string)null);
                 });
 
+            modelBuilder.Entity("MMO_Idle.Domain.Entities.CharacterSkill", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<Guid>("CharacterId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("character_id");
+
+                    b.Property<int>("Experience")
+                        .HasColumnType("integer")
+                        .HasColumnName("experience");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("last_updated");
+
+                    b.Property<int>("Level")
+                        .HasColumnType("integer")
+                        .HasColumnName("level");
+
+                    b.Property<LifeSkillType>("SkillType")
+                        .HasColumnType("life_skill_type")
+                        .HasColumnName("skill_type");
+
+                    b.HasKey("Id")
+                        .HasName("pk_character_skills");
+
+                    b.HasIndex("CharacterId")
+                        .HasDatabaseName("ix_character_skills_character_id");
+
+                    b.ToTable("character_skills", (string)null);
+                });
+
             modelBuilder.Entity("MMO_Idle.Domain.Entities.GameItem", b =>
                 {
                     b.Property<long>("Id")
@@ -252,6 +291,33 @@ namespace MMOIdle.Infrastructure.Migrations
                         .HasName("pk_game_items");
 
                     b.ToTable("game_items", (string)null);
+                });
+
+            modelBuilder.Entity("MMO_Idle.Domain.Entities.SkillLevelRequirement", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<int>("Level")
+                        .HasColumnType("integer")
+                        .HasColumnName("level");
+
+                    b.Property<int>("RequiredExperience")
+                        .HasColumnType("integer")
+                        .HasColumnName("required_experience");
+
+                    b.Property<LifeSkillType?>("SkillType")
+                        .HasColumnType("life_skill_type")
+                        .HasColumnName("skill_type");
+
+                    b.HasKey("Id")
+                        .HasName("pk_skill_level_requirements");
+
+                    b.ToTable("skill_level_requirements", (string)null);
                 });
 
             modelBuilder.Entity("MMOIdle.Domain.Entities.Character", b =>
@@ -306,6 +372,18 @@ namespace MMOIdle.Infrastructure.Migrations
                     b.Navigation("Character");
 
                     b.Navigation("Item");
+                });
+
+            modelBuilder.Entity("MMO_Idle.Domain.Entities.CharacterSkill", b =>
+                {
+                    b.HasOne("MMOIdle.Domain.Entities.Character", "Character")
+                        .WithMany()
+                        .HasForeignKey("CharacterId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired()
+                        .HasConstraintName("fk_character_skills_characters_character_id");
+
+                    b.Navigation("Character");
                 });
 
             modelBuilder.Entity("MMOIdle.Domain.Entities.Account", b =>
