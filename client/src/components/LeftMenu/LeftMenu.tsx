@@ -4,10 +4,11 @@ import mineIcon from '../../assets/mine.svg';
 import forgeIcon from '../../assets/forge.svg';
 import dungeonscon from '../../assets/dungeons.svg';
 import { state } from '../../store';
-import { classMap } from '../../components/constant';
+import { classMap } from '../../constants/constant';
+import { LifeSkillTypeEnum } from '../../enums/LifeSkillTypeEnum';
 
 interface MenuItem {
-  key: string;
+  key: LifeSkillTypeEnum;
   title: string;
   image: string; // 图片路径或URL
   attr: string;
@@ -18,7 +19,7 @@ const LeftMenu: React.FC = (props: { onMenuClick: Function }) => {
   const { onMenuClick = () => {} } = props;
   const menuItems: MenuItem[] = [
     {
-      key: '1',
+      key: LifeSkillTypeEnum.Mining,
       title: state.userInfo.name,
       image: '',
       attr: 'disable',

@@ -3,7 +3,7 @@ import style from './index.module.css';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input, Select } from '@arco-design/web-react';
 import { state, setUserInfo } from '../../store';
-import { classMap, classOptions } from '../../components/constant';
+import { classMap, classOptions } from '../../constants/constant';
 import { useSignalRContext } from '../../context/signalRContext';
 import { getCharacterList, addCharacter, getCharacterDetail } from '../../api/index';
 import { IconArrowLeft } from '@arco-design/web-react/icon';

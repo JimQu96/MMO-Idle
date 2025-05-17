@@ -1,9 +1,8 @@
-namespace MMOIdle.Domain.Enums;
 
 /// <summary>
 /// 表示游戏中物品的不同类型
 /// </summary>
-public enum ItemType
+export enum ItemType
 {
     /// <summary>
     /// 装备类型物品
@@ -12,17 +11,17 @@ public enum ItemType
     /// <summary>
     /// 材料类型物品
     /// </summary>
-    Material,
+    Material = 2,
     /// <summary>
     /// 消耗品类型物品
     /// </summary>
-    Consumable,
+    Consumable = 3,
     /// <summary>
     /// 货币类型物品
     /// </summary>
-    Currency,
+    Currency = 4,
     /// <summary>
     /// 其他类型物品
     /// </summary>
-    Other
+    Other = 5,
 }

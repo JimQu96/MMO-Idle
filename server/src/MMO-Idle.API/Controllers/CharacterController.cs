@@ -36,7 +36,7 @@ public class CharacterController : ControllerBase
     }
 
     [HttpGet("{characterId}/details")]
-    public async Task<ActionResult<List<CharacterDto>>> ListCharacters(Guid characterId)
+    public async Task<ActionResult<CharacterDetailsDto>> ListCharacters(Guid characterId)
     {
         // 从token中获取用户ID
         var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);

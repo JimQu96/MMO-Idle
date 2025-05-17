@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Grid } from '@arco-design/web-react';
 import { IconPlus } from '@arco-design/web-react/icon';
-import { classMap } from '../../components/constant';
+import { classMap } from '../../constants/constant';
 import { state } from '../../store';
 const Row = Grid.Row;
 const Col = Grid.Col;

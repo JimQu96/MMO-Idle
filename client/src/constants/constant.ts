@@ -1,3 +1,5 @@
+import { EquipmentSlotEnum } from "../enums/EquipmentSlotEnum";
+
 export const mineList = [
   {
     attr: 'mine',
@@ -820,6 +822,36 @@ export const userInfo = {
     level: 8,
   },
   fight: {
-    level: 8,
+    level: 8, 
   },
+};
+
+
+export const  equipmentSlotNameMap: { [key: number]: string } = {
+  [EquipmentSlotEnum.Head]: '头部',
+  [EquipmentSlotEnum.Shoulder]: '肩部',
+  [EquipmentSlotEnum.Chest]: '胸部',
+  [EquipmentSlotEnum.Back]: '背部',
+  [EquipmentSlotEnum.Wrist]: '腕部',
+  [EquipmentSlotEnum.Waist]: '腰部',
+  [EquipmentSlotEnum.Hands]: '手部',
+  [EquipmentSlotEnum.Legs]: '腿部',
+  [EquipmentSlotEnum.Feet]: '脚部',
+  [EquipmentSlotEnum.MainHand]: '主手',
+  [EquipmentSlotEnum.OffHand]: '副手',
+  [EquipmentSlotEnum.Neck]: '项链',
+  [EquipmentSlotEnum.Ring1]: '戒指1',
+  [EquipmentSlotEnum.Ring2]: '戒指2',
+  [EquipmentSlotEnum.Accessory1]: '饰品1',
+  [EquipmentSlotEnum.Accessory2]: '饰品2',
+  [EquipmentSlotEnum.Pickaxe]: '镐子',
+  [EquipmentSlotEnum.Knife]: '小刀',
+  [EquipmentSlotEnum.Sickle]: '镰刀',
+  [EquipmentSlotEnum.FishingRod]: '鱼竿',
+  [EquipmentSlotEnum.Hoe]: '锄头',
+  [EquipmentSlotEnum.Hammer]: '锤子',
+  [EquipmentSlotEnum.Chisel]: '凿子',
+  [EquipmentSlotEnum.NeedleAndThread]: '针线',
+  [EquipmentSlotEnum.Shovel]: '铲子',
+  [EquipmentSlotEnum.Cookware]: '锅具',
 };

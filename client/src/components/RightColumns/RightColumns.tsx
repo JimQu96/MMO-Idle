@@ -2,9 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Button, Tabs } from '@arco-design/web-react';
 import { state } from '../../store';
 import Box from '../Box/Box';
+import { EquipmentSlotEnum } from '../../enums/EquipmentSlotEnum';
+
+interface EquipmentSlotInfo {
+  slot: EquipmentSlotEnum;
+  itemId?: number;
+}
 const TabPane = Tabs.TabPane;
 const Card: React.FC = () => {
-  const info=state.userInfo
+  const info = state.userInfo
   const [activeTab, setActiveTab] = useState('0');
   //身体
   const bodyList = [
@@ -313,12 +319,23 @@ const Card: React.FC = () => {
       ),
     },
   ];
-  useEffect(() => {});
+  useEffect(() => {
+    const equipmentSlotList: EquipmentSlotInfo[] = [];
+    for (const key in EquipmentSlotEnum) {
+      // 排除掉数字到字符串的反向映射
+      equipmentSlotList.push({
+        slot: Number(key),
+        itemId: info.equipments.find(item => item.slot === Number(key))?.itemId,
+      });
+    }
+    equipmentSlotList.filter(item => item.slot == EquipmentSlotEnum.Head);
+
+  });
   return (
     <div className="w-[400px] p-[20px_4px] shrink-0  border-[0px_0px_0px_1px] border-solid border-[var(--hover-color)]">
       <Tabs activeTab={activeTab} onChange={setActiveTab}>
         {tabItems.map((item, index) => (
-          <TabPane style={{padding: '0 16px'}} destroyOnHide key={item.key} title={item.title}>
+          <TabPane style={{ padding: '0 16px' }} destroyOnHide key={item.key} title={item.title}>
             {item.content}
           </TabPane>
         ))}

@@ -8,7 +8,7 @@ public enum EquipmentSlot
     /// <summary>
     /// 头部装备槽位，用于放置如头盔等头部装备
     /// </summary>
-    Head,
+    Head = 1 ,
     /// <summary>
     /// 肩部装备槽位，可放置肩部的护具等装备
     /// </summary>

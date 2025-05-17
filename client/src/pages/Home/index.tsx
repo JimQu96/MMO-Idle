@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import LeftMenu from '../../components/LeftMenu/LeftMenu';
 import Card from '../../components/Card/Card';
 import RightColumns from '../../components/RightColumns/RightColumns';
-import { menuCardMap } from '../../components/constant';
+import { menuCardMap } from '../../constants/constant';
 import Chat from '../../components/Chat/Chat';
 import Popup from '../../components/Popup/Popup';
 import Fight from '../../components/Fight/Fight';
