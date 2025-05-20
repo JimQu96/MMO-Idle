@@ -4,8 +4,8 @@ const Card: React.FC = (props: { info: any; width:any, onCardClick: Function }) 
   const { info, width, onCardClick = () => {} } = props;
   const [status, setStatus] = useState('1');
   const textMap:any={
-    'mine':'开采',
-    'forge':'制作',
+    'Mining':'开采',
+    'Blacksmithing':'制作',
     'fight':'战斗',
   }
   //假设 status 1:等级不足，2立即开采，3开采中
@@ -27,7 +27,8 @@ const Card: React.FC = (props: { info: any; width:any, onCardClick: Function }) 
     },
   };
     console.log('卡片信息', info);
-    const currentLevel = state.userInfo[info.attr].level;
+  const { lifeSkills } = state.userInfo;
+    const currentLevel = lifeSkills.find(item => item.skillType === info.attr)?.level;
 
   useEffect(() => {
     console.log('卡片信息', info);

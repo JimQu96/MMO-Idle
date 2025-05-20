@@ -1,8 +1,9 @@
 import { Menu, Progress } from '@arco-design/web-react';
 import style from './index.module.css';
-import mineIcon from '../../assets/mine.svg';
-import forgeIcon from '../../assets/forge.svg';
+import MiningIcon from '../../assets/Mining.svg';
+import BlacksmithingIcon from '../../assets/Blacksmithing.svg';
 import dungeonscon from '../../assets/dungeons.svg';
+import soldierIcon from '../../assets/soldier.svg';
 import { state } from '../../store';
 import { classMap } from '../../constants/constant';
 import { LifeSkillTypeEnum } from '../../enums/LifeSkillTypeEnum';
@@ -17,20 +18,23 @@ interface MenuItem {
 
 const LeftMenu: React.FC = (props: { onMenuClick: Function }) => {
   const { onMenuClick = () => {} } = props;
+  const { name, level, lifeSkills } = state.userInfo;
+  const MiningInfo: any = lifeSkills.find(item => item.skillType === 1);
+  const BlacksmithingInfo: any = lifeSkills.find(item => item.skillType === 6);
   const menuItems: MenuItem[] = [
     {
-      key: LifeSkillTypeEnum.Mining,
-      title: state.userInfo.name,
+      key: '1',
+      title: name,
       image: '',
       attr: 'disable',
       disabled: true,
     },
     {
       key: '2',
-      title: `${classMap[state.userInfo.class]}Lv.${state.userInfo.level}`,
-      image: mineIcon,
+      title: `${classMap[state.userInfo.class]}Lv.${level}`,
+      image: soldierIcon,
       disabled: true,
-      attr: 'mine',
+      attr: 'disable',
     },
     {
       key: '3',
@@ -41,16 +45,16 @@ const LeftMenu: React.FC = (props: { onMenuClick: Function }) => {
     },
     {
       key: '4',
-      title: `采矿Lv.${state.userInfo.mine?.level < 10 ? '0' : ''}${state.userInfo.mine?.level}`,
-      image: mineIcon,
-      attr: 'mine',
+      title: `采矿Lv.${MiningInfo.level < 10 ? '0' : ''}${MiningInfo.level}`,
+      image: MiningIcon,
+      attr: 'Mining',
       disabled: false,
     },
     {
       key: '5',
-      title: `锻造Lv.${state.userInfo.forge?.level < 10 ? '0' : ''}${state.userInfo.forge?.level}`,
-      image: forgeIcon,
-      attr: 'forge',
+      title: `锻造Lv.${BlacksmithingInfo.level < 10 ? '0' : ''}${BlacksmithingInfo.level}`,
+      image: BlacksmithingIcon,
+      attr: 'Blacksmithing',
       disabled: false,
     },
     {
@@ -93,7 +97,7 @@ const LeftMenu: React.FC = (props: { onMenuClick: Function }) => {
       </div>
       {attr !== 'disable' && (
         <div className="relative w-full h-[6px] bg-[var(--third-font-color)] rounded-b-[2px] mb-[10px]">
-          <div className='absolute h-full top-0 left-0 w-[30px] bg-[var(--active-color)]'></div>
+          <div className="absolute h-full top-0 left-0 w-[30px] bg-[var(--active-color)]"></div>
         </div>
       )}
     </div>
@@ -102,7 +106,7 @@ const LeftMenu: React.FC = (props: { onMenuClick: Function }) => {
     <div className={style.leftMenu}>
       <Menu style={{ height: '100%' }} theme="dark" autoOpen={true} defaultOpenKeys={allParentKeys} defaultSelectedKeys={['4']}>
         {menuItems.map(item => (
-          <Menu.Item key={item.key} disabled={item.disabled} style={{cursor:item.disabled?'auto':'pointer'}}>
+          <Menu.Item key={item.key} disabled={item.disabled} style={{ cursor: item.disabled ? 'auto' : 'pointer' }}>
             <CustomMenuItem {...item} />
           </Menu.Item>
         ))}

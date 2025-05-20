@@ -5,7 +5,7 @@ import { Button, Form, Input, Select } from '@arco-design/web-react';
 import { state, setUserInfo } from '../../store';
 import { classMap, classOptions } from '../../constants/constant';
 import { useSignalRContext } from '../../context/signalRContext';
-import { getCharacterList, addCharacter, getCharacterDetail } from '../../api/index';
+import { getCharacterList, addCharacter } from '../../api/index';
 import { IconArrowLeft } from '@arco-design/web-react/icon';
 const FormItem = Form.Item;
 
@@ -16,16 +16,8 @@ const RoleSelect: React.FC = () => {
     const [cteateList, setCreateList] = React.useState([1, 2, 3] as any); //没角色时的占位
     const [roleList, setRoleList] = React.useState([] as any); //角色列表
     const [selectedClass, setSelectedClass] = React.useState(1);
-    const { start } = useSignalRContext();
     const [errors, setErrors] = React.useState('');
-    const getCharacterDetailFunc = async (id: string) => {
-        const res = await getCharacterDetail(id);
-        if (res) {
-            setUserInfo(res.data);
-            start(id)
-            navigate('/');
-        }
-    };
+
     const addCharacterFunc = async (params: any) => {
         const res = await addCharacter(params);
         if (res) {
@@ -160,7 +152,8 @@ const RoleSelect: React.FC = () => {
                             className={style['rule-box']}
                             onClick={() => {
                                 console.log('点击了角色进入页面');
-                                getCharacterDetailFunc(item.id);
+                                navigate('/');
+                                localStorage.setItem('characterId', item.id);
                             }}>
                             <div>{item.name}</div>
                             <div>

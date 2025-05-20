@@ -1,50 +1,50 @@
 import { EquipmentSlotEnum } from "../enums/EquipmentSlotEnum";
 
-export const mineList = [
+export const MiningList = [
   {
-    attr: 'mine',
+    attr: 'Mining',
     color: '#999',
     name: '灰败矿石',
     level: 1,
   },
   {
-    attr: 'mine',
+    attr: 'Mining',
     color: '#fff',
     name: '素白矿石',
     level: 10,
   },
   {
-    attr: 'mine',
+    attr: 'Mining',
     color: '#00B42A',
     name: '翠绿矿石',
     level: 20,
   },
   {
-    attr: 'mine',
+    attr: 'Mining',
     color: '#165DFF',
     name: '蔚蓝矿石',
     level: 30,
   },
   {
-    attr: 'mine',
+    attr: 'Mining',
     color: '#722ED1',
     name: '幽紫矿石',
     level: 40,
   },
   {
-    attr: 'mine',
+    attr: 'Mining',
     color: '#F53F3F',
     name: '绯红矿石',
     level: 50,
   },
   {
-    attr: 'mine',
+    attr: 'Mining',
     color: '#F59631',
     name: '橙煌矿石',
     level: 60,
   },
   {
-    attr: 'mine',
+    attr: 'Mining',
     color: '#F5319D',
     name: '梦粉矿石',
     level: 70,
@@ -52,49 +52,49 @@ export const mineList = [
 ];
 export const hammerList = [
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#999',
     name: '灰败锤子',
     level: 1,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#fff',
     name: '素白锤子',
     level: 10,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#00B42A',
     name: '翠绿锤子',
     level: 20,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#165DFF',
     name: '蔚蓝锤子',
     level: 30,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#722ED1',
     name: '幽紫锤子',
     level: 40,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F53F3F',
     name: '绯红锤子',
     level: 50,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F59631',
     name: '橙煌锤子',
     level: 60,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F5319D',
     name: '梦粉锤子',
     level: 70,
@@ -102,49 +102,49 @@ export const hammerList = [
 ];
 export const pickaxeList = [
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#999',
     name: '灰败镐子',
     level: 1,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#fff',
     name: '素白镐子',
     level: 10,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#00B42A',
     name: '翠绿镐子',
     level: 20,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#165DFF',
     name: '蔚蓝镐子',
     level: 30,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#722ED1',
     name: '幽紫镐子',
     level: 40,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F53F3F',
     name: '绯红镐子',
     level: 50,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F59631',
     name: '橙煌镐子',
     level: 60,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F5319D',
     name: '梦粉镐子',
     level: 70,
@@ -152,49 +152,49 @@ export const pickaxeList = [
 ];
 export const singleSwordList = [
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#999',
     name: '灰败单手剑',
     level: 1,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#fff',
     name: '素白单手剑',
     level: 10,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#00B42A',
     name: '翠绿单手剑',
     level: 20,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#165DFF',
     name: '蔚蓝单手剑',
     level: 30,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#722ED1',
     name: '幽紫单手剑',
     level: 40,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F53F3F',
     name: '绯红单手剑',
     level: 50,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F59631',
     name: '橙煌单手剑',
     level: 60,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F5319D',
     name: '梦粉单手剑',
     level: 70,
@@ -202,49 +202,49 @@ export const singleSwordList = [
 ];
 export const shieldList = [
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#999',
     name: '灰败盾牌',
     level: 1,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#fff',
     name: '素白盾牌',
     level: 10,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#00B42A',
     name: '翠绿盾牌',
     level: 20,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#165DFF',
     name: '蔚蓝盾牌',
     level: 30,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#722ED1',
     name: '幽紫盾牌',
     level: 40,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F53F3F',
     name: '绯红盾牌',
     level: 50,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F59631',
     name: '橙煌盾牌',
     level: 60,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F5319D',
     name: '梦粉盾牌',
     level: 70,
@@ -252,49 +252,49 @@ export const shieldList = [
 ];
 export const headList = [
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#999',
     name: '灰败板甲头盔',
     level: 1,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#fff',
     name: '素白板甲头盔',
     level: 10,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#00B42A',
     name: '翠绿板甲头盔',
     level: 20,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#165DFF',
     name: '蔚蓝板甲头盔',
     level: 30,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#722ED1',
     name: '幽紫板甲头盔',
     level: 40,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F53F3F',
     name: '绯红板甲头盔',
     level: 50,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F59631',
     name: '橙煌板甲头盔',
     level: 60,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F5319D',
     name: '梦粉板甲头盔',
     level: 70,
@@ -302,49 +302,49 @@ export const headList = [
 ];
 export const shoulderList = [
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#999',
     name: '灰败板甲护肩',
     level: 1,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#fff',
     name: '素白板甲护肩',
     level: 10,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#00B42A',
     name: '翠绿板甲护肩',
     level: 20,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#165DFF',
     name: '蔚蓝板甲护肩',
     level: 30,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#722ED1',
     name: '幽紫板甲护肩',
     level: 40,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F53F3F',
     name: '绯红板甲护肩',
     level: 50,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F59631',
     name: '橙煌板甲护肩',
     level: 60,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F5319D',
     name: '梦粉板甲护肩',
     level: 70,
@@ -352,49 +352,49 @@ export const shoulderList = [
 ];
 export const chestList = [
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#999',
     name: '灰败板甲护胸',
     level: 1,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#fff',
     name: '素白板甲护胸',
     level: 10,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#00B42A',
     name: '翠绿板甲护胸',
     level: 20,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#165DFF',
     name: '蔚蓝板甲护胸',
     level: 30,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#722ED1',
     name: '幽紫板甲护胸',
     level: 40,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F53F3F',
     name: '绯红板甲护胸',
     level: 50,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F59631',
     name: '橙煌板甲护胸',
     level: 60,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F5319D',
     name: '梦粉板甲护胸',
     level: 70,
@@ -402,49 +402,49 @@ export const chestList = [
 ];
 export const wristList = [
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#999',
     name: '灰败板甲护腕',
     level: 1,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#fff',
     name: '素白板甲护腕',
     level: 10,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#00B42A',
     name: '翠绿板甲护腕',
     level: 20,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#165DFF',
     name: '蔚蓝板甲护腕',
     level: 30,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#722ED1',
     name: '幽紫板甲护腕',
     level: 40,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F53F3F',
     name: '绯红板甲护腕',
     level: 50,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F59631',
     name: '橙煌板甲护腕',
     level: 60,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F5319D',
     name: '梦粉板甲护腕',
     level: 70,
@@ -452,49 +452,49 @@ export const wristList = [
 ];
 export const waistList = [
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#999',
     name: '灰败板甲护腰',
     level: 1,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#fff',
     name: '素白板甲护腰',
     level: 10,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#00B42A',
     name: '翠绿板甲护腰',
     level: 20,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#165DFF',
     name: '蔚蓝板甲护腰',
     level: 30,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#722ED1',
     name: '幽紫板甲护腰',
     level: 40,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F53F3F',
     name: '绯红板甲护腰',
     level: 50,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F59631',
     name: '橙煌板甲护腰',
     level: 60,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F5319D',
     name: '梦粉板甲护腰',
     level: 70,
@@ -502,49 +502,49 @@ export const waistList = [
 ];
 export const handList = [
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#999',
     name: '灰败板甲护手',
     level: 1,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#fff',
     name: '素白板甲护手',
     level: 10,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#00B42A',
     name: '翠绿板甲护手',
     level: 20,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#165DFF',
     name: '蔚蓝板甲护手',
     level: 30,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#722ED1',
     name: '幽紫板甲护手',
     level: 40,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F53F3F',
     name: '绯红板甲护手',
     level: 50,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F59631',
     name: '橙煌板甲护手',
     level: 60,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F5319D',
     name: '梦粉板甲护手',
     level: 70,
@@ -552,49 +552,49 @@ export const handList = [
 ];
 export const legList = [
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#999',
     name: '灰败板甲护腿',
     level: 1,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#fff',
     name: '素白板甲护腿',
     level: 10,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#00B42A',
     name: '翠绿板甲护腿',
     level: 20,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#165DFF',
     name: '蔚蓝板甲护腿',
     level: 30,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#722ED1',
     name: '幽紫板甲护腿',
     level: 40,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F53F3F',
     name: '绯红板甲护腿',
     level: 50,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F59631',
     name: '橙煌板甲护腿',
     level: 60,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F5319D',
     name: '梦粉板甲护腿',
     level: 70,
@@ -602,49 +602,49 @@ export const legList = [
 ];
 export const footList = [
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#999',
     name: '灰败板甲靴子',
     level: 1,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#fff',
     name: '素白板甲靴子',
     level: 10,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#00B42A',
     name: '翠绿板甲靴子',
     level: 20,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#165DFF',
     name: '蔚蓝板甲靴子',
     level: 30,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#722ED1',
     name: '幽紫板甲靴子',
     level: 40,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F53F3F',
     name: '绯红板甲靴子',
     level: 50,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F59631',
     name: '橙煌板甲靴子',
     level: 60,
   },
   {
-    attr: 'forge',
+    attr: 'Blacksmithing',
     color: '#F5319D',
     name: '梦粉板甲靴子',
     level: 70,
@@ -691,10 +691,10 @@ export const fightList = [
   },
 ];
 export const menuCardMap = {
-  mine: {
-    cardList: mineList,
+  Mining: {
+    cardList: MiningList,
   },
-  forge: {
+  Blacksmithing: {
     subMenu: [
       {
         key: 'tools',
@@ -815,10 +815,10 @@ export const userInfo = {
     def: '1%',
     block: '1%',
   },
-  mine: {
+  Mining: {
     level: 10,
   },
-  forge: {
+  Blacksmithing: {
     level: 8,
   },
   fight: {

@@ -8,21 +8,33 @@ import { menuCardMap } from '../../constants/constant';
 import Chat from '../../components/Chat/Chat';
 import Popup from '../../components/Popup/Popup';
 import Fight from '../../components/Fight/Fight';
-import { state } from '../../store';
+import { state, setUserInfo } from '../../store';
+import { getCharacterDetail } from '../../api/index';
+import { useSignalRContext } from '../../context/signalRContext';
 
 const Home: React.FC = () => {
-  const [activeMenu, setActiveMenu] = useState('mine');
+  const [activeMenu, setActiveMenu] = useState('Mining');
   const [allParentKeys, setAllParentKeys] = useState<string[]>([]);
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
-  const [cardList, setCardList] = useState<object[]>(menuCardMap['mine'].cardList);
+  const [cardList, setCardList] = useState<object[]>(menuCardMap['Mining'].cardList);
   const [showPopup, setShowPopup] = useState(false);
   const [showFight, setShowFight] = useState(false);
   const [fightInfo, setFightInfo] = useState({});
+  const { start } = useSignalRContext();
   const userInfo = state.userInfo;
   useEffect(() => {
-    console.log('首页', userInfo);
-    setShowPopup(true);
-  },[]);
+    const characterId = localStorage.getItem('characterId');
+    console.log('首页', userInfo, characterId);
+    getCharacterDetailFunc(characterId);
+    // setShowPopup(true);
+  }, []);
+  const getCharacterDetailFunc = async (id: any) => {
+    const res = await getCharacterDetail(id);
+    if (res) {
+      setUserInfo(res.data);
+      start(id);
+    }
+  };
   const handleCardClick = (info: any) => {
     console.log('点击卡片', info);
     if (info.attr === 'fight') {
@@ -120,7 +132,7 @@ const Home: React.FC = () => {
               ) : (
                 <>
                   <div
-                    className="grid justify-center gap-[20px]"
+                    className="grid justify-center gap-[20px] hide-scrollbar overflow-y-scroll"
                     style={{ maxHeight: 'calc(100vh - 380px)', gridTemplateColumns: 'repeat(auto-fit, 300px)', gridAutoRows: 'min-content' }}>
                     {cardList.map(item => (
                       <Card info={item} width={300} onCardClick={handleCardClick} />

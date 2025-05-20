@@ -18,6 +18,7 @@ const Navbar: React.FC = () => {
           navigate('/roleSelect');
         } else if (key === '2') {
           setToken('');
+          localStorage.removeItem('characterId')
           navigate('/login');
         }
       }}>
