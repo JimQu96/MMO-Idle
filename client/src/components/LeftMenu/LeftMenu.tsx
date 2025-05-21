@@ -6,10 +6,9 @@ import dungeonscon from '../../assets/dungeons.svg';
 import soldierIcon from '../../assets/soldier.svg';
 import { state } from '../../store';
 import { classMap } from '../../constants/constant';
-import { LifeSkillTypeEnum } from '../../enums/LifeSkillTypeEnum';
 
 interface MenuItem {
-  key: LifeSkillTypeEnum;
+  key: string;
   title: string;
   image: string; // 图片路径或URL
   attr: string;
@@ -31,7 +30,7 @@ const LeftMenu: React.FC = (props: { onMenuClick: Function }) => {
     },
     {
       key: '2',
-      title: `${classMap[state.userInfo.class]}Lv.${level}`,
+      title: `${classMap[state.userInfo.class]}Lv.${level < 10 ? '0' : ''}${level}`,
       image: soldierIcon,
       disabled: true,
       attr: 'disable',

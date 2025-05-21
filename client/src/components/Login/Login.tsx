@@ -79,7 +79,7 @@ const Login: React.FC = () => {
         </FormItem>
         {errors.userName && <div className="text-[var(--danger-color)] mb-[20px]">{errors.userName}</div>}
         <FormItem label="密码" field="password">
-          <Input maxLength={32} className={style.input} placeholder="请输入密码" />
+          <Input.Password maxLength={32} className={style.input} placeholder="请输入密码" />
         </FormItem>
         {errors.password && <div className="text-[var(--danger-color)] mb-[20px]">{errors.password}</div>}
         {!hasAccount && (

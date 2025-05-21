@@ -96,3 +96,11 @@ body {
 .arco-menu-inner::-webkit-scrollbar {
   display: none !important;
 }
+/* 隐藏modal border */
+.arco-modal-footer, .arco-modal-header{
+  border: none;
+}
+/* 调整modal的padding */
+.arco-modal-content{
+  padding: 20px 150px;
+}

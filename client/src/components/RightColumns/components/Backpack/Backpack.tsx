@@ -7,7 +7,7 @@ interface EquipmentSlotInfo {
   itemId?: number;
 }
 const Backpack: React.FC = () => {
-  const info = state.userInfo
+  const backpacks = state.userInfo.backpacks
  
 
   //背包里分为材料，装备

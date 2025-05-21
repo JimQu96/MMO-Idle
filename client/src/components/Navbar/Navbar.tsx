@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Button, Dropdown, Menu } from '@arco-design/web-react';
+import { Button, Dropdown, Menu, Modal } from '@arco-design/web-react';
 import { useNavigate } from 'react-router-dom';
 import style from './index.module.css';
 import logo from '../../assets/react.svg';
@@ -9,18 +9,15 @@ const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const progressBarRef = useRef<HTMLDivElement | null>(null);
   const [working, setWorking] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [title, setTitle] = useState('');
   const dropList = (
     <Menu
       style={{ width: 200 }}
       theme="dark"
       onClickMenuItem={(key: string) => {
-        if (key === '1') {
-          navigate('/roleSelect');
-        } else if (key === '2') {
-          setToken('');
-          localStorage.removeItem('characterId')
-          navigate('/login');
-        }
+        setVisible(true);
+        setTitle(key === '1' ? '选择角色' : '退出登录');
       }}>
       <Menu.Item key="1">选择角色</Menu.Item>
       <Menu.Item key="2">退出登录</Menu.Item>
@@ -80,6 +77,24 @@ const Navbar: React.FC = () => {
           <img style={{ width: 32, height: 32, marginLeft: 20, marginRight: 20 }} src={logo} alt="" />
         </Dropdown>
       </div>
+      <Modal
+        title={title}
+        visible={visible}
+        onOk={() => {
+          setVisible(false);
+          if (title === '选择角色') {
+            navigate('/roleSelect');
+          } else {
+            setToken('');
+            localStorage.removeItem('characterId');
+            navigate('/login');
+          }
+        }}
+        onCancel={() => setVisible(false)}
+        autoFocus={false}
+        focusLock={true}>
+        <div className='text-center'>{`确认要${title}吗？`}</div>
+      </Modal>
     </div>
   );
 };

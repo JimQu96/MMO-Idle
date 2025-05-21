@@ -1,4 +1,5 @@
 import { EquipmentSlotEnum } from "../enums/EquipmentSlotEnum";
+import { ItemQuality } from "../enums/ItemQuality";
 
 export const MiningList = [
   {
@@ -854,4 +855,15 @@ export const  equipmentSlotNameMap: { [key: number]: string } = {
   [EquipmentSlotEnum.NeedleAndThread]: '针线',
   [EquipmentSlotEnum.Shovel]: '铲子',
   [EquipmentSlotEnum.Cookware]: '锅具',
+};
+export const  itemColorMap: { [key: number]: string } = {
+  [ItemQuality.Normal]:'#FFC300',
+  [ItemQuality.Gray]:'#999',
+  [ItemQuality.White]:'#fff',
+  [ItemQuality.Green]:'#00B42A',
+  [ItemQuality.Blue]:'#165DFF',
+  [ItemQuality.Purple]:'#722ED1',
+  [ItemQuality.Red]:'#F53F3F',
+  [ItemQuality.Orange]:'#F59631',
+  [ItemQuality.Rainbow]:'#F5319D',
 };

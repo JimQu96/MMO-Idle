@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Modal } from '@arco-design/web-react';
+import React, { useEffect } from 'react';
+import { Modal } from '@arco-design/web-react';
 const Popup: React.FC = (props: { show: boolean; info: object; onBoxClick: Function }) => {
   const { show, info, onBoxClick = () => {} } = props;
   const [visible, setVisible] = React.useState(false);
