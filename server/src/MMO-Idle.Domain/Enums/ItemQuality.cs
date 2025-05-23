@@ -8,7 +8,7 @@ public enum ItemQuality
     /// <summary>
     /// 普通品质
     /// </summary>
-    Normal,
+    Normal = 1,
     /// <summary>
     /// 灰色品质
     /// </summary>

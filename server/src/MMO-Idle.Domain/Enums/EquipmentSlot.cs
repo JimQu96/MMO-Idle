@@ -14,17 +14,13 @@ public enum EquipmentSlot
     /// </summary>
     Shoulder,
     /// <summary>
-    /// 背部装备槽位，能放置披风、背包等背部相关装备
-    /// </summary>
-    Back,
-    /// <summary>
     /// 胸部装备槽位，用于放置胸甲之类的胸部防护装备
     /// </summary>
     Chest,
     /// <summary>
-    /// 手部装备槽位，可以装备手套等手部用品
+    /// 背部装备槽位，能放置披风、背包等背部相关装备
     /// </summary>
-    Hands,
+    Back,
     /// <summary>
     /// 腕部装备类型，如护腕
     /// </summary>
@@ -34,21 +30,25 @@ public enum EquipmentSlot
     /// </summary>
     Waist,
     /// <summary>
-    /// 腿部装备槽位，用于放置护腿等腿部防护装备
+    /// 手部装备槽位，可以装备手套等手部用品
     /// </summary>
-    Legs,
-    /// <summary>
-    /// 脚部装备槽位，能装备靴子等脚部用品
-    /// </summary>
-    Feet,
+    Hands,
     /// <summary>
     /// 主手装备槽位，通常放置主要使用的武器
     /// </summary>
     MainHand,
     /// <summary>
+    /// 腿部装备槽位，用于放置护腿等腿部防护装备
+    /// </summary>
+    Legs,
+    /// <summary>
     /// 副手装备槽位，可放置盾牌、副手武器或其他辅助工具
     /// </summary>
     OffHand,
+    /// <summary>
+    /// 脚部装备槽位，能装备靴子等脚部用品
+    /// </summary>
+    Feet,
     /// <summary>
     /// 项链装备槽位，用于佩戴项链等饰品
     /// </summary>

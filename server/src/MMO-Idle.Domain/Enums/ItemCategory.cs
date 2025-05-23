@@ -5,7 +5,7 @@ public enum ItemCategory
     /// <summary>
     /// 货币类型物品
     /// </summary>
-    Currency,
+    Currency = 0,
     /// <summary>
     /// 矿石类型物品
     /// </summary>
