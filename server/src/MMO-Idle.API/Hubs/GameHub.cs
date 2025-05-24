@@ -22,7 +22,7 @@ namespace MMOIdle.API.Hubs
 
         public async Task StartAction(StartActionMessageDto startActionMessageDto)
         {
-
+            
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace MMOIdle.API.Hubs
         /// </summary>
         public override async Task OnConnectedAsync()
         {
-            if (Context.GetHttpContext().Request.Query.TryGetValue("characterId", out var characterIdValue))
+            if (Context.GetHttpContext()!.Request.Query.TryGetValue("characterId", out var characterIdValue))
             {
                 if (Guid.TryParse(characterIdValue, out var characterId))
                 {

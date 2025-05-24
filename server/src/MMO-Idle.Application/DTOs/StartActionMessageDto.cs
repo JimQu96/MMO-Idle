@@ -9,7 +9,7 @@ namespace MMO_Idle.Application.DTOs
 {
     public class StartActionMessageDto
     {
-        public string ActionType { get; set; }
+        public long ActionId { get; set; }
         public bool HasMaxCount { get; set; }
         public int MaxCount { get; set; }
         public bool ShouldClearQueue { get; set; }

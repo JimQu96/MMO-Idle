@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>MMO_Idle.API</RootNamespace>
+    <UserSecretsId>b1240190-b156-4eed-a2ec-8ab22cded7fd</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

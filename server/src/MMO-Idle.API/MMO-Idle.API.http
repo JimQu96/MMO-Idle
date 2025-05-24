@@ -27,6 +27,10 @@ Content-Type: application/json
     "class": 1
 }
 
+### 获取全部物品清单
+GET {{MMO_Idle.API_HostAddress}}/api/GameItem/list
+Accept: application/json
+Authorization: Bearer {{authToken}}
 
 ### 获取角色全部状态
 GET {{MMO_Idle.API_HostAddress}}/api/character/{{characterId}}/details

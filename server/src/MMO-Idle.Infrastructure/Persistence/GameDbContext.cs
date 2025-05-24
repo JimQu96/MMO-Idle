@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using MMO_Idle.Domain.Entities;
 using MMOIdle.Domain.Entities;
-using MMOIdle.Domain.Entities;
+using System.Text.Json;
 
 namespace MMOIdle.Infrastructure.Persistence;
 
@@ -13,6 +14,7 @@ public class GameDbContext : DbContext
     public DbSet<GameItem> GameItems { get; set; } = null!;
     public DbSet<CharacterSkill> CharacterSkills { get; set; } = null!;
     public DbSet<SkillLevelRequirement> SkillLevelRequirements { get; set; } = null!;
+    public DbSet<LifeSkillAction> LifeSkillActions { get; set; } = null!;
 
     public GameDbContext(DbContextOptions<GameDbContext> options) : base(options)
     {
@@ -116,6 +118,24 @@ public class GameDbContext : DbContext
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Level).IsRequired();
             entity.Property(e => e.RequiredExperience).IsRequired();
+        });
+
+        var jsonSerializerOptions = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+        modelBuilder.Entity<LifeSkillAction>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.ResourceCost)
+            .HasColumnType("jsonb")
+            .HasConversion(
+                    v => v != null ? JsonSerializer.Serialize(v, jsonSerializerOptions) : "{}",
+                    v => v != null ? JsonSerializer.Deserialize<Dictionary<long, int>>(v, jsonSerializerOptions) : new Dictionary<long, int>()
+                );
+            entity.Property(e => e.ResourceYield)
+            .HasColumnType("jsonb")
+            .HasConversion(
+                    v => v != null ? JsonSerializer.Serialize(v, jsonSerializerOptions) : "{}",
+                    v => v != null ? JsonSerializer.Deserialize<Dictionary<long, int>>(v, jsonSerializerOptions) : new Dictionary<long, int>()
+                );
         });
     }
 }
